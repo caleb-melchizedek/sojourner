@@ -14,11 +14,14 @@ const mongoose = require('mongoose'),
         trim: true,
         lowercase: true,
       },
-      password: {
-        type: Buffer,
-        required: true,
+      tel:{
+        type:String,
+      },
+      location:{
+        type:String,
+        required:true
       }
     }
   );
   
-  module.exports = mongoose.model('User', FacilitySchema);
+  module.exports = mongoose.model('Facility', FacilitySchema);

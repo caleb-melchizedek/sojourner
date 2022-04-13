@@ -21,4 +21,4 @@ const mongoose = require('mongoose'),
     }
   );
   
-  module.exports = mongoose.model('User', AdminSchema);
+  module.exports = mongoose.model('Admin', AdminSchema);
