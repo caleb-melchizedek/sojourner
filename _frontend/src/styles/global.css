@@ -26,9 +26,16 @@ a:hover {
 .search input{
   @apply h-10 w-36 p-4 rounded-md outline-none ;
 }
+.search select{
+  @apply h-10 w-36  rounded-md outline-none ;
+}
+
+button{
+  @apply rounded-md 
+}
 
 .search button{
-  @apply h-10 w-36 font-medium rounded-md m-2 bg-blue-50 transition-all ;
+  @apply h-10 w-36 font-medium m-2 bg-white transition-all ;
 }
 .search button:hover{
   @apply bg-blue-500 text-white

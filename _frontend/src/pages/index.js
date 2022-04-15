@@ -1,8 +1,21 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
+
+import SearchSection from "../components/searchSection"
+import SearchResults from "../components/searchResults"
 
 
 export default function Home() {
+  const [searchResults,setSearchResults] =useState([])
+
+  const  handleSubmit= async (e)=>{
+    e.preventDefault;
+    const response= await fetch()
+    const results = await response.json()
+    setSearchResults(results)
+  }
+
   return (
     <>
     <div className="bg-[url('/bg.jpg')] bg-cover bg-fixed">
@@ -10,41 +23,24 @@ export default function Home() {
         <title>Sojourner</title>
       </Head>
       
-        <div className="flex flex-col  items-stretch  min-h-screen px-7 pt-7 z-10 backdrop-blur-sm">
-          <header id="landing-text" className="w-full">
-            <h1 className=" text-4xl sm:text-7xl font-bold  ">
-             Sojourner
-            </h1>
-            <h4 className="font-semibold  text-m">
-              Search for a suitable accommodation
-            </h4>
+        <div className="flex flex-col  items-stretch w-full min-h-screen px-7 pt-7 z-10 backdrop-blur-sm">
+          <header id="landing-text" className="w-full flex flex-row justify-between">
+            <div>
+              <h1 className=" text-white text-4xl sm:text-7xl font-bold  ">
+              Sojourner
+              </h1>
+              <h4 className="font-semibold  text-white">
+                Search for a suitable accommodation
+              </h4>
+            </div>
+            <div>
+              <button className="self-center p-2 text-white font-semibold hover:bg-blue-500 transition-all">Sign In as admin</button>
+
+            </div>
           </header>
             <div className="flex flex-row grow w-full items-center justify-center ">
-              <form className="search">
-                <div className="w-full flex justify-center mb-4 ">
-                  {/* whats your budget? lowest */}
-                  <div className="flex flex-col items-center m-4">
-                    <label className="text-white font-medium mb-2">I'll spend at least</label>
-                    <input className="" type="text" placeholder="GHC"></input>
-                  </div>
-                  {/* whats your budget? highest */}
-                  <div className="flex flex-col items-center m-4">
-                    <label className="text-white font-medium mb-2">I'll spend at most</label>
-                  <input type="text" placeholder="GHC"></input>
-                  </div>
-                  {/*  whats your budget? room capacity*/}
-                  <div className="flex flex-col items-center m-4">
-                    <label className="text-white font-medium mb-2">Room capacity</label>
-                  <input type="text" placeholder="People per room"></input>
-                  </div>
-                  {/* whats your budget? payment cycle */}
-                  <div className="flex flex-col items-center m-4">
-                    <label className="text-white font-medium mb-2">Payment cycle</label>
-                  <input type="text" placeholder="per month"></input>
-                  </div>
-                </div>
-                <button type="submit"> Search</button>
-              </form>
+              <SearchSection handleSubmit={handleSubmit} />
+              <SearchResults searchResults={searchResults}/>
             </div>
             <footer className="flex items-center text-sm justify-center w-full h-10">
               Powered by{" "}
