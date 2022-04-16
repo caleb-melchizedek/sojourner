@@ -1,35 +1,35 @@
 export default function SearchSection(props){
-    const{handleSubmit}=props
+    const{handleSubmit,handleSearchParamChange}=props
     return(
         <>
-        <form className="search">
+        <form className="search" onSubmit={(e)=>{handleSubmit(e)}}>
                 <div className="w-full flex justify-center mb-4 ">
                   {/* whats your budget? lowest */}
                   <div className="flex flex-col items-center m-4">
                     <label className="text-white font-medium mb-2">I'll spend at least</label>
-                    <input className="" type="text" placeholder="GHC"></input>
+                    <input name="lowestPrice" onChange={(e)=>{handleSearchParamChange(e)}} className="" type="Number" min={"0"} placeholder="GHC"></input>
                   </div>
                   {/* whats your budget? highest */}
                   <div className="flex flex-col items-center m-4">
                     <label className="text-white font-medium mb-2">I'll spend at most</label>
-                  <input type="text" placeholder="GHC"></input>
+                  <input name="highestPrice" onChange={(e)=>{handleSearchParamChange(e)}} type="Number" min={"0"} placeholder="GHC"></input>
                   </div>
                   {/*  whats your budget? room capacity*/}
                   <div className="flex flex-col items-center m-4">
                     <label className="text-white font-medium mb-2">Room capacity</label>
-                  <input type="Number" min={"1"} max={"4"} placeholder="People per room"></input>
+                  <input name="roomCapacity" onChange={(e)=>{handleSearchParamChange(e)}} type="Number" min={"1"} max={"4"} placeholder="People per room"></input>
                   </div>
                   {/* whats your budget? payment cycle */}
                   <div className="flex flex-col items-center m-4">
                     <label className="text-white font-medium mb-2">Payment cycle</label>
-                  <select >
-                    <option value={"Month"}>Month</option>
-                    <option value={"Semester"}>Semester</option>
-                    <option value={"Year"}>Year</option>
+                  <select name="PaymentCycle" onChange={(e)=>{handleSearchParamChange(e)}}>
+                    <option value={"month"}>Month</option>
+                    <option value={"semester"}>Semester</option>
+                    <option value={"year"}>Year</option>
                   </select>
                   </div>
                 </div>
-                <button type="submit" onSubmit={()=>{handleSubmit(e)}}> Search</button>
+                <button type="submit"> Search</button>
               </form>
         </>
     )

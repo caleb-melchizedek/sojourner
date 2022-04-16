@@ -3,7 +3,7 @@ const mongoose = require('mongoose'),
 
   let FacilitySchema = new Schema(
     {
-    fullname: {
+    facilityname: {
         type: String,
         required: true,
       },
@@ -15,7 +15,7 @@ const mongoose = require('mongoose'),
         lowercase: true,
       },
       tel:{
-        type:String,
+        type:Number,
       },
       location:{
         type:String,
