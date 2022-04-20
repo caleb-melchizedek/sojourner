@@ -39,6 +39,8 @@ export default function Home(props) {
                 <div className=" h-full flex flex-col mx-10 ">
                   <h1 className=" font-semibold text-3xl ">{room.facility.facilityname}</h1>
                   <p className=" text-lg "> Location: {room.facility.location}</p>
+                  <p className=" text-lg "> Email: {room.facility.email}</p>
+                  <p className=" text-lg "> Tel: {room.facility.tel}</p>
                   <p className=" font-semibold text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
                   <p className=" font-semibold text-xl ">{room.roomCapacity} in a room</p>                  
                 </div>
