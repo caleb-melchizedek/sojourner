@@ -1,4 +1,4 @@
-var facility = require('./facilitySchema');
+
 var room = require('./roomSchema');
 async function handler( req, res){
   let {lowestPrice,highestPrice,roomCapacity,paymentCycle} = req.body
@@ -9,7 +9,6 @@ async function handler( req, res){
   if(paymentCycle==='')paymentCycle=null;
   //res.json(`you searched for rooms with these params ${lowestPrice}, ${highestPrice},${roomCapacity},${paymentCycle}`)
 try{
-
     results = await room.find(
         {
           $or: [
