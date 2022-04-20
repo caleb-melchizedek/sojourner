@@ -30,8 +30,8 @@ export default function Home(props) {
               </div>
             </header>
           </div>
-          <section className="px-10 py-4">
-            <div className=" bg-white px-14 py-6 flex flex-col grow w-full items-center justify-center">
+          <section className="px-10 py-4 ">
+            <div className=" bg-white px-14 py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
               <div className="w-full rounded-md  flex flex-row items-start mb-10 ">
                 <div className="h-36 w-36 rounded-md mr-2">
                     <img className="h-full w-full object-cover rounded-md" src="/bg.jpg"></img>
@@ -43,17 +43,17 @@ export default function Home(props) {
                   <p className=" font-semibold text-xl ">{room.roomCapacity} in a room</p>                  
                 </div>
               </div>
-              <div className=" w-full h-40 rounded-md flex flex-nowrap items-start overflow-y-hidden overflow-x-auto scroll-smooth snap-x  snap-mandatory ">
-                  <img className="h-36 w-auto object-cover rounded-md mr-2 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-2 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-2 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-2 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-2 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-2 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-2 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-2 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-2 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-2 snap-always snap-center" src="/bg.jpg"></img>
+              <div className=" w-full h-48 rounded-md flex flex-nowrap items-start overflow-y-hidden overflow-x-auto scroll-smooth snap-x  snap-mandatory scroll-w-0 ">
+                  <img className="h-36 w-auto object-cover rounded-md mr-4  snap-always snap-center" src="/bg.jpg"></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
               </div>
             </div>
           </section>
