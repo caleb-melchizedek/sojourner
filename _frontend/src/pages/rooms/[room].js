@@ -42,7 +42,7 @@ export default function Home(props) {
                     <p className=" text-base "> Location: {room.facility.location}</p>
                     <p className=" text-base "> Email: {room.facility.email===""? "not available":room.facility.email}</p>
                     <p className=" text-base "> Tel: {room.facility.tel}</p>
-                    <p className=" font-normal text-sm ">Extra featurs{room.extraFeatures} </p>
+                    <p className=" font-normal text-sm ">Extra features{room.extraFeatures} </p>
                   </div>
                   <div className="h-full ">
                     <p className=" font-semibold text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
