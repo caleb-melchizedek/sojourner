@@ -8,9 +8,10 @@ import SearchResults from "../components/searchResults"
 
 export default function Home() {
   const [searchQuery,setSearchQuery]= useState({lowestPrice:"",highestPrice:"",roomCapacity:"",paymentCycle:"month"})
-  const [searchResults,setSearchResults] =useState([1,2,3,4,5])
+  const [searchResults,setSearchResults] =useState({results:[],searched:false})
 
   const  handleSubmit = async (e)=>{
+    console.log(searchQuery);
     e.preventDefault();
     const response= await fetch('http://localhost:4000/search', 
     {
@@ -22,8 +23,10 @@ export default function Home() {
       body: JSON.stringify(searchQuery),
     })
     const results = await response.json()
-    // setSearchResults(results)
     console.log(results);
+      setSearchResults({results,searched:true})
+      console.log(searchResults);
+   
   }
 
   const handleSearchParamChange = (e)=>{
@@ -42,29 +45,40 @@ export default function Home() {
         <div className="flex flex-col  items-stretch w-full  px-10 pt-7 z-10 ">
           <header id="landing-text" className="w-full flex flex-row justify-between">
             <div>
-              <h1 className=" text-white text-4xl sm:text-7xl font-bold  ">
-              Sojourner
-              </h1>
+              <Link href="/">
+                <h1 className=" text-white text-4xl sm:text-7xl font-bold cursor-pointer ">
+                  Sojourner
+                </h1>
+              </Link>
               <h4 className="font-semibold  text-white">
                 Search for a suitable accommodation
               </h4>
             </div>
             <div>
-              <button className="self-center p-2 text-white font-semibold hover:bg-blue-500 transition-all">Sign In as admin</button>
+              <button className="self-center mt-7 p-2 text-white font-semibold hover:bg-blue-500 transition-all">Sign In as admin</button>
 
             </div>
           </header>
-            <div className="flex flex-row grow w-full items-center justify-center my-12 ">
+            <div className="flex flex-row grow w-full items-center justify-center my-6 ">
               <SearchSection handleSubmit={handleSubmit} handleSearchParamChange={handleSearchParamChange} />
             </div>
         </div>
-        <section className="px-10 py-10">
-        { 
-           searchResults.map(res=>{
-           return( 
-            <SearchResults key={res}searchResult={res}/>
+        <section className="px-10 py-4">
+        { (searchResults.searched===true && searchResults.results.length>0)?
+            searchResults.results.map(res=>{
+              //return String(res)
+            return( 
+                <SearchResults key={res._id} searchResult={res} />   
+              )
+            })
+          :(searchResults.searched===true && searchResults.results.length===0)?
+            ( <div className="flex flex-row items-center justify-center">
+                <h2 className="font-semibold text-3xl  text-white ">Sorry could not find any such room</h2>
+              </div>
             )
-          })
+          :null 
+           
+          
         }
           
            

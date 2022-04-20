@@ -6,8 +6,8 @@ async function handler( req, res){
     let {facilityname,email,tel,location}= req.body;
 
     facilityEmail = await Facility.findOne({ email: email.toLowerCase() });
-    if(facilityEmail){
-      return res.status(422).json({message:'Sorry a facility with this email already exists'});
+    if(facilityEmail && email!==""){
+      res.status(422).json({message:'Sorry a facility with this email already exists'});
     }
     else{
       let newFacility= new Facility({
@@ -15,15 +15,15 @@ async function handler( req, res){
       });
       try{
       await newFacility.save()
-        .then(doc=>{
+        .then( async doc=>{
           console.log(doc);
-          let facilities = Facility.find();
-          if (f){res.json(facilities)}
+        //   let allFacilities = await Facility.find({});
+        //   if (allFacilities){res.json({allFacilities})}
         })
       
       }catch(err){
-        console.log(`couldnt save new facility to database due error:${err}`);
-        res.end
+        console.log(`couldnt save new facility to database due to error:${err}`);
+        res.end()
       }
     }
     

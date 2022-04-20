@@ -22,10 +22,11 @@ export default function SearchSection(props){
                   {/* whats your budget? payment cycle */}
                   <div className="flex flex-col items-center m-4">
                     <label className="text-white font-medium mb-2">Payment cycle</label>
-                  <select name="PaymentCycle" onChange={(e)=>{handleSearchParamChange(e)}}>
+                  <select name="paymentCycle" onChange={(e)=>{handleSearchParamChange(e)}}>
                     <option value={"month"}>Month</option>
                     <option value={"semester"}>Semester</option>
                     <option value={"year"}>Year</option>
+                    <option value={""}>Any</option>
                   </select>
                   </div>
                 </div>

@@ -6,16 +6,16 @@ const mongoose = require('mongoose'),
     facilityname: {
         type: String,
         required: true,
+        unique:true
       },
       email: {
         type: String,
-        required: true,
-        unique: true,
         trim: true,
         lowercase: true,
+        default:""
       },
       tel:{
-        type:Number,
+        type:String,
       },
       location:{
         type:String,

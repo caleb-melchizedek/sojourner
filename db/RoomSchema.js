@@ -3,7 +3,7 @@ const mongoose = require('mongoose'),
 
   let RoomSchema = new Schema(
     {
-    facility:{type: Schema.Types.ObjectId, ref: "Facility"},
+    facility:{type: Schema.Types.ObjectId, ref: "Facility", required:true},
     roomCapacity: {
         type: Number,
         required: true,
@@ -14,8 +14,8 @@ const mongoose = require('mongoose'),
         paymentCycle: {type:String, enum:["month","semester","year"], required:true},
         residentType:{type:String,enum:["Student","NSS","Any"], default:"Any"},
       },
-      extraFeatures:[{extraFeature:String}]
-    }
+      extraFeatures:String  
+    } 
   );
   
   module.exports = mongoose.model('Room', RoomSchema);

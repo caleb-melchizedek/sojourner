@@ -1,16 +1,18 @@
 var bcrypt = require('bcrypt');
+var Facility= require('./facilitySchema')
 var Room = require('./roomSchema');
 
 async function handler( req, res){
   try{
-    let {roomCapacity,amount,paymentCycle,residetType,extraFeatures}= req.body;
+    let {facility,roomCapacity,amount,paymentCycle,residentType,extraFeatures}= req.body;
 
-    // facilityId = await Facility.findOne({ facility: facility});
-    // if(facilityId){
-    //   return res.status(422).json({message:'Sorry a facility with this email already exists'});
-    // }
-    // else{
+    facilityId = await Facility.findOne({ facilityname: facility}, {_id:1});
+    if(!facilityId){
+      res.status(422).json({message:'Sorry no such facility exists within the database'});
+    }
+    else{
       let newRoom= new Room({
+        facility:facilityId,
         roomCapacity,
         pricing:{
             amount,
@@ -21,17 +23,17 @@ async function handler( req, res){
       });
       try{
       await newRoom.save()
-        .then(doc=>{
+        .then(async doc=>{
           console.log(doc);
-          let facilities = Facility.find();
-          if (f){res.json(facilities)}
+          // let rooms = await Room.find({});
+          // if (rooms){res.json(rooms)}
         })
       
       }catch(err){
-        console.log(`couldnt save new room to database due error:${err}`);
-        res.end
+        console.log(`couldnt save new room to database due to error: ${err}`);
+        res.end()
       }
-    // }
+    }
     
   } catch(err){
     console.log(err);
