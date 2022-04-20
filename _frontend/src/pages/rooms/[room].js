@@ -66,7 +66,7 @@ export default function Home(props) {
 
 export async function getServerSideProps(context) {
   const {params}= context;
-  const response = await fetch(`http://localhost:4000/room/${params.room}`)
+  const response = await fetch(`https://rentit-backend.herokuapp.com/room/${params.room}`)
   const data = await response.json()
   return {
     props: {

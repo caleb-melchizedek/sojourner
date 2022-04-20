@@ -13,7 +13,7 @@ export default function Home() {
   const  handleSubmit = async (e)=>{
     console.log(searchQuery);
     e.preventDefault();
-    const response= await fetch('http://localhost:4000/search', 
+    const response= await fetch('https://rentit-backend.herokuapp.com/search', 
     {
       method: 'POST',
       // mode: 'no-cors',
