@@ -36,13 +36,18 @@ export default function Home(props) {
                 <div className="h-36 w-36 rounded-md mr-2">
                     <img className="h-full w-full object-cover rounded-md" src="/bg.jpg"></img>
                 </div>
-                <div className=" h-full flex flex-col mx-10 ">
-                  <h1 className=" font-semibold text-3xl ">{room.facility.facilityname}</h1>
-                  <p className=" text-lg "> Location: {room.facility.location}</p>
-                  <p className=" text-lg "> Email: {room.facility.email}</p>
-                  <p className=" text-lg "> Tel: {room.facility.tel}</p>
-                  <p className=" font-semibold text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
-                  <p className=" font-semibold text-xl ">{room.roomCapacity} in a room</p>                  
+                <div className=" h-full grow flex flex-row items-center justify-between  mx-10 ">
+                  <div className="h-full">
+                    <h1 className=" font-semibold text-3xl ">{room.facility.facilityname}</h1>
+                    <p className=" text-base "> Location: {room.facility.location}</p>
+                    <p className=" text-base "> Email: {room.facility.email===""? "not available":room.facility.email}</p>
+                    <p className=" text-base "> Tel: {room.facility.tel}</p>
+                    <p className=" font-normal text-sm ">Extra featurs{room.extraFeatures} </p>
+                  </div>
+                  <div className="h-full ">
+                    <p className=" font-semibold text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
+                    <p className=" font-semibolb text-xl ">{room.roomCapacity} in a room</p>      
+                  </div>            
                 </div>
               </div>
               <div className=" w-full h-48 rounded-md flex flex-nowrap items-start overflow-y-hidden overflow-x-auto scroll-smooth snap-x  snap-mandatory scroll-w-0 ">
