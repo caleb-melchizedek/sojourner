@@ -3,7 +3,7 @@ var room = require('./roomSchema');
 
 async function handler( req, res){
     const roomId= req.params.roomId
-    console.log(roomId)
+    // console.log(roomId)
     try{
         results = await room.find(
             {"_id":roomId},
@@ -11,7 +11,7 @@ async function handler( req, res){
             )
             .populate("facility",{"_id":0, "__v":0});
         if(results.length>0){
-            console.log(results)
+            // console.log(results)
             res.status(200).json(results)
         }
         else {throw("empty array")}

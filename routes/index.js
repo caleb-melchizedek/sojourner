@@ -11,7 +11,7 @@ var addRoom = require('../db/addRoom');
 
 /* GET home page. */
 router.post('/', function(req, res, next) {
-  req.body
+  res.send("server is up")
   return(res)
 });
 
