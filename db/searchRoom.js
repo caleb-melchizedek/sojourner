@@ -1,5 +1,4 @@
-var facility = require('./facilitySchema');
-var room = require('./roomSchema');
+const room = require('./roomSchema');
 
 async function handler( req, res){
     const roomId= req.params.roomId
