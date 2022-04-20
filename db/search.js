@@ -1,5 +1,4 @@
-
-var room = require('./roomSchema');
+const room = require('./roomSchema');
 async function handler( req, res){
   let {lowestPrice,highestPrice,roomCapacity,paymentCycle} = req.body
   console.log({lowestPrice,highestPrice,roomCapacity,paymentCycle})
