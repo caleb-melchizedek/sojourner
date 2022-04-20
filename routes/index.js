@@ -1,7 +1,7 @@
 
 var express = require('express');
 var router = express.Router();
-var signup = require('../db/signup');
+var signup = require('../db/signUp');
 var login = require('../db/login');
 var search = require('../db/search');
 var searchRoom = require('../db/searchRoom')
