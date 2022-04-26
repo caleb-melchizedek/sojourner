@@ -79,22 +79,22 @@ export default function Home(props) {
             </header>
           </div>
           <section className="px-10 py-4 ">
-            <div className=" bg-white px-14 py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
-              <div className="w-full rounded-md  flex flex-row items-start mb-10 ">
-                <div className="h-36 w-36 rounded-md mr-2">
+            <div className=" bg-white px-3 md:px-14 py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
+              <div className="w-full rounded-md  flex flex-col md:flex-row items-center md:items-start mb-10 ">
+                <div className="h-40 md:w-36 rounded-md mr-2">
                     <img className="h-full w-full object-cover rounded-md" src="/bg.jpg"></img>
                 </div>
-                <div className=" h-full grow flex flex-row items-center justify-between  mx-10 ">
+                <div className=" h-full grow flex flex-col md:flex-row items-start md:items-center justify-between mt-2 mx-2 md:mx-10 ">
                   <div className="h-full">
-                    <h1 className=" font-semibold text-3xl ">{room.facility.facilityname}</h1>
-                    <p className=" text-base "> Location: {room.facility.location}</p>
-                    <p className=" text-base "> Email: {room.facility.email===""? "not available":room.facility.email}</p>
-                    <p className=" text-base "> Tel: {room.facility.tel}</p>
+                    <h1 className=" font-semibold text-lg md:text-3xl ">{room.facility.facilityname}</h1>
+                    <p className=" text-sm "> Location: {room.facility.location}</p>
+                    <p className=" text-sm "> Email: {room.facility.email===""? "not available":room.facility.email}</p>
+                    <p className=" text-sm "> Tel: {room.facility.tel}</p>
                     <p className=" font-normal text-sm ">Extra features{room.extraFeatures} </p>
                   </div>
                   <div className="h-full ">
-                    <p className=" font-semibold text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
-                    <p className=" font-semibolb text-xl ">{room.roomCapacity} in a room</p>      
+                    <p className=" font-semibold md:text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
+                    <p className=" font-semibolb md:text-xl ">{room.roomCapacity} in a room</p>      
                   </div>            
                 </div>
               </div>

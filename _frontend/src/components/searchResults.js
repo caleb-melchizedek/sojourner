@@ -10,8 +10,8 @@ export default function SearchResults({searchResult,searched}){
           <div className=" h-full flex flex-col ml-4 md:ml-10 ">
             <h1 className=" font-semibold text-lg md:text-3xl ">{searchResult.facility.facilityname}</h1>
             <p className="  text-xs md:text-sm ">{searchResult.facility.location}</p>
-            <p className=" font-semibold text-xs md:text-xl ">{searchResult.pricing.currency} {searchResult.pricing.amount} per {searchResult.pricing.paymentCycle}</p>
-            <p className=" font-semibold text-xs md:text-xl ">{searchResult.roomCapacity} in a room</p>                  
+            <p className=" md:font-semibold text-xs md:text-xl ">{searchResult.pricing.currency} {searchResult.pricing.amount} per {searchResult.pricing.paymentCycle}</p>
+            <p className=" md:font-semibold text-xs md:text-xl ">{searchResult.roomCapacity} in a room</p>                  
           </div>
         </div>
       </Link>
