@@ -16,7 +16,7 @@ export default function Home({dashboardInfo}) {
         </Head>
         <div className=" backdrop-blur-sm min-h-screen min-w-full">
           <div className="flex flex-col  items-stretch w-full px-4 md:px-10 pt-4 md:pt-7 z-10  ">
-            <header id="landing-text" className="w-full flex flex-row justify-between">
+            <header id="landing-text" className="w-full flex flex-row justify-between items-start">
               <div>
                 <Link href="/">
                   <h1 className=" text-white text-xl md:text-4xl sm:text-7xl font-bold cursor-pointer ">
@@ -27,13 +27,13 @@ export default function Home({dashboardInfo}) {
                   Search for a suitable accommodation
                 </h4>
               </div>
-              <div>
-                <p className="self-center mt-7 p-2 text-white text-xs md:text-base font-semibold transition-all">Welcome, {admin.fullname}</p>
-                <Link href="/"><button className="float-right self-center h-10 md:mt-7 p-2 text-white font-semibold text-xs md:text-base hover:bg-blue-500 transition-all">Log Out</button></Link>
+              <div className="pt-4">
+                <p className="self-center md:mt-7  text-white text-xs md:text-base font-semibold transition-all">Welcome, {admin.fullname}</p>
+                <Link href="/"><button className="float-right self-center md:h-10 md:mt-7 text-white font-semibold text-xs md:text-base hover:bg-blue-500 transition-all">Log Out</button></Link>
               </div>
             </header>
           </div>
-          <section className=" md:px-10 py-4 ">
+          <section className=" md:px-10 py-10 md:py-4 ">
             <div className=" px-10 md:px-14 md:py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
               {
                 facilities.map(fac=>{
