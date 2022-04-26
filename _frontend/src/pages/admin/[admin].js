@@ -14,27 +14,27 @@ export default function Home({dashboardInfo}) {
         <Head>
           <title>Sojourner</title>
         </Head>
-        <div className=" backdrop-blur-sm min-h-screen">
-          <div className="flex flex-col  items-stretch w-full  px-10 pt-7 z-10 ">
+        <div className=" backdrop-blur-sm min-h-screen min-w-full">
+          <div className="flex flex-col  items-stretch w-full px-4 md:px-10 pt-4 md:pt-7 z-10  ">
             <header id="landing-text" className="w-full flex flex-row justify-between">
               <div>
                 <Link href="/">
-                  <h1 className=" text-white text-4xl sm:text-7xl font-bold cursor-pointer">
+                  <h1 className=" text-white text-xl md:text-4xl sm:text-7xl font-bold cursor-pointer ">
                     Sojourner
                   </h1>
                 </Link>
-                <h4 className="font-semibold  text-white">
+                <h4 className="md:font-semibold text-white text-xs md:text-lg">
                   Search for a suitable accommodation
                 </h4>
               </div>
               <div>
-                <p className="self-center mt-7 p-2 text-white font-semibold transition-all">Welcome, {admin.fullname}</p>
-                <Link href="/"><button className="float-right  p-2 text-white font-semibold hover:bg-blue-500 transition-all">Log Out</button></Link>
+                <p className="self-center mt-7 p-2 text-white text-xs md:text-base font-semibold transition-all">Welcome, {admin.fullname}</p>
+                <Link href="/"><button className="float-right self-center h-10 md:mt-7 p-2 text-white font-semibold text-xs md:text-base hover:bg-blue-500 transition-all">Log Out</button></Link>
               </div>
             </header>
           </div>
-          <section className="px-10 py-4 ">
-            <div className="  px-14 py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
+          <section className=" md:px-10 py-4 ">
+            <div className=" px-10 md:px-14 md:py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
               {
                 facilities.map(fac=>{
                   return(

@@ -58,7 +58,7 @@ export default function Home() {
     e.preventDefault();
     setLoginIn(true)
     setLoginError("")
-    const response= await fetch('https://rentit-backend.herokuapp.com/search', 
+    const response= await fetch('https://rentit-backend.herokuapp.com/adminLogin', 
     // const response= await fetch('http://localhost:4000/adminLogin', 
     {
       method: 'POST',

@@ -11,7 +11,7 @@ export default function LoginForm (props){
             {
             loginIn &&(
                 <div className=" flex flex-col p- items-center justify-center">
-                    <img className="h-6 text-blue-500" src="Infinity-1s-200px_blue.svg"></img>
+                    <img className="h-6 text-blue-500" src="/Infinity-1s-200px_blue.svg"></img>
                 </div>  
             )
             }

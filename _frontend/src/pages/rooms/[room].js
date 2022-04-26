@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
-import Router from "next/router"
+import { useRouter } from 'next/router'
 
 
 import LoginForm from "../../components/loginForm"
@@ -9,12 +9,13 @@ import LoginForm from "../../components/loginForm"
 export default function Home(props) {  
 
   const room = props.room[0];
+  const router = useRouter()
   console.log(props.room);
 
   const [showLogin,setShowLogin]= useState(false)
   const [loginDetails,setLoginDetails]= useState({email:"",password:""})
-
-  var loginError=""
+  const [loginIn,setLoginIn]= useState(false)
+  const [loginError,setLoginError]= useState("")
 
   const toggleLogin= ()=>{
     setShowLogin(!showLogin);
@@ -27,10 +28,11 @@ export default function Home(props) {
   }
 
   const handleLogin= async (e)=>{
-    console.log(loginDetails);
     e.preventDefault();
-    // const response= await fetch('https://rentit-backend.herokuapp.com/search', 
-    const response= await fetch('http://localhost:4000/adminLogin', 
+    setLoginIn(true)
+    setLoginError("")
+    const response= await fetch('https://rentit-backend.herokuapp.com/adminLogin', 
+    // const response= await fetch('http://localhost:4000/adminLogin', 
     {
       method: 'POST',
       // mode: 'no-cors',
@@ -39,13 +41,14 @@ export default function Home(props) {
       },
       body: JSON.stringify(loginDetails),
     })
-    const results = await response.json()
-    if(results.adminId){
-       Router.push(`/admin/${results.adminId}`)
-      console.log(results.adminId)
+    const {adminId,errMessage} = await response.json()
+    if(adminId){
+      console.log(adminId); 
+      router.push(`/admin/${adminId}`);
     } else{
-      loginError= results.errMessage
-      console.log(results.errMessage)
+      setLoginIn(false)
+      setLoginError(errMessage)
+      console.log(errMessage)
     }
   }
 
