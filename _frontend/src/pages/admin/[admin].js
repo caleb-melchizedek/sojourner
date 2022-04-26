@@ -27,7 +27,7 @@ export default function Home({dashboardInfo}) {
                   Search for a suitable accommodation
                 </h4>
               </div>
-              <div className="pt-4">
+              <div className="pt-2">
                 <p className="self-center md:mt-7  text-white text-xs md:text-base font-semibold transition-all">Welcome, {admin.fullname}</p>
                 <Link href="/"><button className="float-right self-center md:h-10 md:mt-7 text-white font-semibold text-xs md:text-base hover:bg-blue-500 transition-all">Log Out</button></Link>
               </div>
