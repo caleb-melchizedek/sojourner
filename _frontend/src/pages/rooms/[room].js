@@ -80,8 +80,8 @@ export default function Home(props) {
         </div>
           <section className="px-10 py-10 md:py-4 ">
             <div className=" bg-white px-3 md:px-14 py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
-              <div className="w-full rounded-md  flex flex-col md:flex-row items-center md:items-start mb-10 ">
-                <div className="h-40 md:w-36 rounded-md mr-2">
+              <div className="w-full rounded-md  flex flex-col md:flex-row items-center justify-center md:items-start mb-10 ">
+                <div className="h-40 md:w-36 rounded-md mr-2 flex flex-row  ">
                     <img className="h-full w-full object-cover rounded-md" src="/bg.jpg"></img>
                 </div>
                 <div className=" h-full grow flex flex-col md:flex-row items-start md:items-center justify-between mt-2 mx-2 md:mx-10 ">
@@ -92,7 +92,7 @@ export default function Home(props) {
                     <p className=" text-sm "> Tel: {room.facility.tel}</p>
                     <p className=" font-normal text-sm ">Extra features{room.extraFeatures} </p>
                   </div>
-                  <div className="h-full ">
+                  <div className="h-full  w-full flex flex-col items-end md:items-start ">
                     <p className=" font-semibold md:text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
                     <p className=" font-semibolb md:text-xl ">{room.roomCapacity} in a room</p>      
                   </div>            
