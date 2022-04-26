@@ -7,7 +7,7 @@ var search = require('../db/search');
 var searchRoom = require('../db/searchRoom')
 var addFacility = require('../db/addFacility');
 var addRoom = require('../db/addRoom');
-
+var getAdminDashboard =require('../db/getAdminDashboard')
 
 /* GET home page. */
 router.post('/', function(req, res, next) {
@@ -15,9 +15,10 @@ router.post('/', function(req, res, next) {
   return(res)
 });
 
-router.post('/login', login);
+router.post('/adminLogin', login);
+router.get('/admin/:adminId', getAdminDashboard);
 
-router.post('/signup',signup);
+router.post('/adminSignup',signup);
 
 router.post('/search', search);
 router.get('/room/:roomId', searchRoom);

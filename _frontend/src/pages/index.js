@@ -1,18 +1,28 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from 'next/router'
 import { useState } from "react";
+
+
 
 import SearchSection from "../components/searchSection"
 import SearchResults from "../components/searchResults"
 
 
 export default function Home() {
+  const router = useRouter()
   const [searchQuery,setSearchQuery]= useState({lowestPrice:"",highestPrice:"",roomCapacity:"",paymentCycle:"month"})
   const [searchResults,setSearchResults] =useState({results:[],searched:false})
+  const [showLogin,setShowLogin]= useState(false)
+  const [loginDetails,setLoginDetails]= useState({email:"",password:""})
+
+
+   var loginError=""
 
   const  handleSubmit = async (e)=>{
     console.log(searchQuery);
     e.preventDefault();
+    // const response= await fetch('https://rentit-backend.herokuapp.com/search', 
     const response= await fetch('https://rentit-backend.herokuapp.com/search', 
     {
       method: 'POST',
@@ -34,8 +44,39 @@ export default function Home() {
     setSearchQuery({...searchQuery, [name] : value});
     console.log(searchQuery);
   }
+  const toggleLogin= ()=>{
+    setShowLogin(!showLogin);
+  }
 
-  return (
+  const handleLoginDetailsChange = (e)=>{
+    const {name,value}= e.target;
+    setLoginDetails({...loginDetails, [name] : value});
+    console.log(loginDetails);
+  }
+
+  const handleLogin= async (e)=>{
+    e.preventDefault();
+    // const response= await fetch('https://rentit-backend.herokuapp.com/search', 
+    const response= await fetch('http://localhost:4000/adminLogin', 
+    {
+      method: 'POST',
+      // mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginDetails),
+    })
+    const {adminId} = await response.json()
+    if(adminId){
+      console.log(adminId); 
+      router.push(`/admin/${adminId}`);
+    } else{
+      loginError= result.errMessage
+      console.log(result.errMessage)
+    }
+  }
+
+  return (  
     <>
     <div className="bg-[url('/bg.jpg')] bg-cover bg-fixed min-h-screen">
       <Head>
@@ -55,8 +96,19 @@ export default function Home() {
               </h4>
             </div>
             <div>
-              <button className="self-center mt-7 p-2 text-white font-semibold hover:bg-blue-500 transition-all">Sign In as admin</button>
-
+              <button className="self-center mt-7 p-2 text-white font-semibold hover:bg-blue-500 transition-all" onClick={toggleLogin}>Login In as admin</button>
+              <div className="relative my-3">
+                {showLogin && 
+                  <form className="login" onSubmit={(e)=>{handleLogin(e)}}>
+                    <div className="w-full flex justify-end mt-2 mr-2 text-lg cursor-pointer" onClick={toggleLogin}>x</div>
+                    <label className="text-xs text-gray-500 font-medium mb-3 mt-1  ">login as admin</label>
+                    <input type="email" required name="email" placeholder="Email" onChange={(e)=>{handleLoginDetailsChange(e)}}></input>
+                    <input type="password" required name="password" placeholder="Password" onChange={(e)=>{handleLoginDetailsChange(e)}} ></input>
+                    <button type="submit"> login</button>
+                    <p className="login Error">{loginError}</p>
+                  </form>
+                }
+              </div>
             </div>
           </header>
             <div className="flex flex-row grow w-full items-center justify-center my-6 ">

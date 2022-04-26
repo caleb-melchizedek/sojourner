@@ -1,7 +1,7 @@
 var bcrypt = require('bcrypt');
 var User = require('./adminSchema');
 
-async function handler( req, res){
+async function handler(req, res){
   try{
     let {fullname,email,password}= req.body;
 
@@ -13,7 +13,7 @@ async function handler( req, res){
       
       let hashpwd = await bcrypt.hash(password,10);
       let newUser= new User({
-        fullname,
+        fullname:fullname,
         email:email.toLowerCase(),
         password:hashpwd
       });
@@ -21,8 +21,7 @@ async function handler( req, res){
       await newUser.save()
         .then(doc=>{
           console.log(doc);
-         // return doc;
-         res.redirect(`/new/${doc._id}`);
+          res.json(doc)
         })
       
       }catch(err){

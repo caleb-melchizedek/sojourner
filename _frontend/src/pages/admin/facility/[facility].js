@@ -4,48 +4,16 @@ import { useState } from "react";
 import Router from "next/router"
 
 
-export default function Home(props) {  
+export default function Facility(props) {  
 
-  const room = props.room[0];
+//   const room = props.facility[0];
   console.log(props.room);
 
   const [showLogin,setShowLogin]= useState(false)
   const [loginDetails,setLoginDetails]= useState({email:"",password:""})
 
-  var loginError=""
 
-  const toggleLogin= ()=>{
-    setShowLogin(!showLogin);
-  }
-
-  const handleLoginDetailsChange = (e)=>{
-    const {name,value}= e.target;
-    setLoginDetails({...loginDetails, [name] : value});
-    console.log(loginDetails);
-  }
-
-  const handleLogin= async (e)=>{
-    console.log(loginDetails);
-    e.preventDefault();
-    // const response= await fetch('https://rentit-backend.herokuapp.com/search', 
-    const response= await fetch('http://localhost:4000/adminLogin', 
-    {
-      method: 'POST',
-      // mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(loginDetails),
-    })
-    const results = await response.json()
-    if(results.adminId){
-       Router.push(`/admin/${results.adminId}`)
-      console.log(results.adminId)
-    } else{
-      loginError= results.errMessage
-      console.log(results.errMessage)
-    }
-  }
+  
 
   return (
     <>
@@ -67,19 +35,8 @@ export default function Home(props) {
                 </h4>
               </div>
               <div>
-                <button className="self-center mt-7 p-2 text-white font-semibold hover:bg-blue-500 transition-all" onClick={toggleLogin}>login as admin</button>
-                <div className="relative my-3">
-                  {showLogin && 
-                    <form className="login" onSubmit={(e)=>{handleLogin(e)}}>
-                      <div className="w-full flex justify-end mt-2 mr-2 text-lg cursor-pointer" onClick={toggleLogin}>x</div>
-                      <label className="text-xs text-gray-500 font-medium mb-3 mt-1  ">login as admin</label>
-                      <input type="email" required name="email" placeholder="Email" onChange={(e)=>{handleLoginDetailsChange(e)}}></input>
-                      <input type="password" required name="password" placeholder="Password" onChange={(e)=>{handleLoginDetailsChange(e)}} ></input>
-                      <button type="submit"> login</button>
-                      <p className="login Error">{loginError}</p>
-                    </form>
-                  }
-                </div>
+                <p className="self-center mt-7 p-2 text-white font-semibold transition-all">Welcome, {/*admin.fullname*/}</p>
+                <Link href="/"><button className="float-right  p-2 text-white font-semibold hover:bg-blue-500 transition-all">Log Out</button></Link>
               </div>
             </header>
           </div>
@@ -91,15 +48,14 @@ export default function Home(props) {
                 </div>
                 <div className=" h-full grow flex flex-row items-center justify-between  mx-10 ">
                   <div className="h-full">
-                    <h1 className=" font-semibold text-3xl ">{room.facility.facilityname}</h1>
-                    <p className=" text-base "> Location: {room.facility.location}</p>
-                    <p className=" text-base "> Email: {room.facility.email===""? "not available":room.facility.email}</p>
-                    <p className=" text-base "> Tel: {room.facility.tel}</p>
-                    <p className=" font-normal text-sm ">Extra features{room.extraFeatures} </p>
+                    <h1 className=" font-semibold text-3xl ">facility.facilityname</h1>
+                    <p className=" text-base "> Location: facility.location</p>
+                    <p className=" text-base "> Email: facility.email===""? "not available":room.facility.email</p>
+                    <p className=" text-base "> Tel: facility.tel</p>
+                    <p className=" font-normal text-sm ">Extra features extraFeatures </p>
                   </div>
                   <div className="h-full ">
-                    <p className=" font-semibold text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
-                    <p className=" font-semibolb text-xl ">{room.roomCapacity} in a room</p>      
+                       
                   </div>            
                 </div>
               </div>
@@ -124,13 +80,13 @@ export default function Home(props) {
 }
 
 
-export async function getServerSideProps(context) {
-  const {params}= context;
-  const response = await fetch(`https://rentit-backend.herokuapp.com/room/${params.room}`)
-  const data = await response.json()
-  return {
-    props: {
-      room:data
-    }, // will be passed to the page component as props
-  }
-}
+// export async function getServerSideProps(context) {
+//   const {params}= context;
+//   const response = await fetch(`https://rentit-backend.herokuapp.com/room/${params.room}`)
+//   const data = await response.json()
+//   return {
+//     props: {
+//       room:data
+//     }, // will be passed to the page component as props
+//   }
+// }

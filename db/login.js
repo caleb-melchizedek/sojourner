@@ -3,35 +3,31 @@ var User = require('./adminSchema');
 
 async function handler( req, res){
   try{
-    ///let {fullname,email,password}= req.body;
+    let {email,password}= req.body;
 
-    user = await User.findOne(
+   let  user = await User.findOne(
+      {email: email.toLowerCase()},
       {
-        email: req.body.email.toLowerCase(),
-      },
-      {
-        email: 1,
-        password: 1,
-        _id: 1,
+        "__v":0
       }
     );
-      console.log(user);
-    if(!user)  res.status(500).json({message:'Sorry could not find you check your login details or signup'});
+      // console.log(user);
+    if(!user)  res.json({errMessage:'Sorry seems you are not an admin try another email'});
     else{
-      console.log(` from login ${user.password.toString()}`);
-      let pwd = await bcrypt.compare(req.body.password,user.password.toString() );
+      // console.log(`from login ${user.password.toString()}`);
+      let pwd = await bcrypt.compare(password,user.password.toString() );
       if(!pwd){
-        res.status(500).json({message:'Sorry check your password'});      
+        res.json({errMessage:'Sorry you entered the wrong password'});      
       }
       else{
-        res.redirect(`/new/${user._id}`);
+        res.json({adminId:user._id});
       }
     }
     
   
   } catch(err){
     console.log(err);
-    return res.status(500).json({message:'Sorry could not Login you in'});
+    return res.status(500).json({errMessage:'Sorry could not Login you in check yourlogin details'});
   }
 
 
