@@ -4,10 +4,11 @@ import { useState } from "react";
 import Router from "next/router"
 
 
-export default function Facility(props) {  
+export default function Facility({facility,rooms}) {  
 
 //   const room = props.facility[0];
-  console.log(props.room);
+  console.log(rooms);
+  console.log(facility);
 
   const [showLogin,setShowLogin]= useState(false)
   const [loginDetails,setLoginDetails]= useState({email:"",password:""})
@@ -46,13 +47,12 @@ export default function Facility(props) {
                 <div className="h-36 w-36 rounded-md mr-2">
                     <img className="h-full w-full object-cover rounded-md" src="/bg.jpg"></img>
                 </div>
-                <div className=" h-full grow flex flex-row items-center justify-between  mx-10 ">
+                <div className=" h-full flex flex-row items-center justify-between  mx-10 ">
                   <div className="h-full">
-                    <h1 className=" font-semibold text-3xl ">facility.facilityname</h1>
-                    <p className=" text-base "> Location: facility.location</p>
-                    <p className=" text-base "> Email: facility.email===""? "not available":room.facility.email</p>
-                    <p className=" text-base "> Tel: facility.tel</p>
-                    <p className=" font-normal text-sm ">Extra features extraFeatures </p>
+                    <h1 className=" font-semibold text-3xl ">{facility.facilityname}</h1>
+                    <p className=" text-base "> Location: {facility.location}</p>
+                    <p className=" text-base "> Email: {facility.email===""? "not available":facility.email}</p>
+                    <p className=" text-base "> Tel: {facility.tel}</p>
                   </div>
                   <div className="h-full ">
                        
@@ -80,13 +80,15 @@ export default function Facility(props) {
 }
 
 
-// export async function getServerSideProps(context) {
-//   const {params}= context;
-//   const response = await fetch(`https://rentit-backend.herokuapp.com/room/${params.room}`)
-//   const data = await response.json()
-//   return {
-//     props: {
-//       room:data
-//     }, // will be passed to the page component as props
-//   }
-// }
+export async function getServerSideProps(context) {
+  const {params}= context;
+  const response = await fetch(`https://rentit-backend.herokuapp.com/admin/facility/${params.facility}`)
+  // const response = await fetch(`http://localhost:4000/admin/facility/${params.facility}`)
+  const data = await response.json()
+  return {
+    props: {
+      facility:data.facility[0],
+      rooms:data.rooms
+    }, // will be passed to the page component as props
+  }
+}

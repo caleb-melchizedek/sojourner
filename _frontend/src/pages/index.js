@@ -7,19 +7,19 @@ import { useState } from "react";
 
 import SearchSection from "../components/searchSection"
 import SearchResults from "../components/searchResults"
-
+import LoginForm from "../components/loginForm"
 
 export default function Home() {
   const router = useRouter()
   const [searchQuery,setSearchQuery]= useState({lowestPrice:"",highestPrice:"",roomCapacity:"",paymentCycle:"month"})
-  const [searchResults,setSearchResults] =useState({results:[],searched:false})
+  const [searchResults,setSearchResults] =useState({results:[],searched:false,searching:false})
   const [showLogin,setShowLogin]= useState(false)
   const [loginDetails,setLoginDetails]= useState({email:"",password:""})
-
-
-   var loginError=""
+  const [loginIn,setLoginIn]= useState(false)
+  const [loginError,setLoginError]= useState("")
 
   const  handleSubmit = async (e)=>{
+    setSearchResults({searching:true})
     console.log(searchQuery);
     e.preventDefault();
     // const response= await fetch('https://rentit-backend.herokuapp.com/search', 
@@ -34,7 +34,7 @@ export default function Home() {
     })
     const results = await response.json()
     console.log(results);
-      setSearchResults({results,searched:true})
+      setSearchResults({results,searched:true,searching:false})
       console.log(searchResults);
    
   }
@@ -56,6 +56,8 @@ export default function Home() {
 
   const handleLogin= async (e)=>{
     e.preventDefault();
+    setLoginIn(true)
+    setLoginError("")
     // const response= await fetch('https://rentit-backend.herokuapp.com/search', 
     const response= await fetch('http://localhost:4000/adminLogin', 
     {
@@ -66,19 +68,21 @@ export default function Home() {
       },
       body: JSON.stringify(loginDetails),
     })
-    const {adminId} = await response.json()
+    const {adminId,errMessage} = await response.json()
     if(adminId){
       console.log(adminId); 
       router.push(`/admin/${adminId}`);
     } else{
-      loginError= result.errMessage
-      console.log(result.errMessage)
+      setLoginIn(false)
+      setLoginError(errMessage)
+      console.log(errMessage)
     }
   }
 
   return (  
     <>
     <div className="bg-[url('/bg.jpg')] bg-cover bg-fixed min-h-screen">
+
       <Head>
         <title>Sojourner</title>
       </Head>
@@ -99,14 +103,7 @@ export default function Home() {
               <button className="self-center mt-7 p-2 text-white font-semibold hover:bg-blue-500 transition-all" onClick={toggleLogin}>Login In as admin</button>
               <div className="relative my-3">
                 {showLogin && 
-                  <form className="login" onSubmit={(e)=>{handleLogin(e)}}>
-                    <div className="w-full flex justify-end mt-2 mr-2 text-lg cursor-pointer" onClick={toggleLogin}>x</div>
-                    <label className="text-xs text-gray-500 font-medium mb-3 mt-1  ">login as admin</label>
-                    <input type="email" required name="email" placeholder="Email" onChange={(e)=>{handleLoginDetailsChange(e)}}></input>
-                    <input type="password" required name="password" placeholder="Password" onChange={(e)=>{handleLoginDetailsChange(e)}} ></input>
-                    <button type="submit"> login</button>
-                    <p className="login Error">{loginError}</p>
-                  </form>
+                  <LoginForm handleLogin={handleLogin} toggleLogin={toggleLogin} handleLoginDetailsChange={handleLoginDetailsChange} loginError={loginError} loginIn={loginIn} />
                 }
               </div>
             </div>
@@ -116,7 +113,14 @@ export default function Home() {
             </div>
         </div>
         <section className="px-10 py-4">
-        { (searchResults.searched===true && searchResults.results.length>0)?
+        { (searchResults.searching)? 
+            (
+              <div className="flex flex-col items-center justify-center">
+              <img className="h-36" src="Infinity-1s-200px.svg"></img>
+              {/* <p className="font-semibold text-2xl  text-white ">Searching for good places</p> */}
+              </div>
+            ):  
+            (searchResults.searched===true && searchResults.results.length>0)?
             searchResults.results.map(res=>{
               //return String(res)
             return( 
@@ -132,7 +136,7 @@ export default function Home() {
            
           
         }
-          
+
            
             {/* <div className="w-full rounded-md bg-white h-40 flex flex-row items-start p-2 my-4">
               <div className="h-36 w-36 rounded-md mr-2">

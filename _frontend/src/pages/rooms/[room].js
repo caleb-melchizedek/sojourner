@@ -4,6 +4,8 @@ import { useState } from "react";
 import Router from "next/router"
 
 
+import LoginForm from "../../components/loginForm"
+
 export default function Home(props) {  
 
   const room = props.room[0];
@@ -70,14 +72,7 @@ export default function Home(props) {
                 <button className="self-center mt-7 p-2 text-white font-semibold hover:bg-blue-500 transition-all" onClick={toggleLogin}>login as admin</button>
                 <div className="relative my-3">
                   {showLogin && 
-                    <form className="login" onSubmit={(e)=>{handleLogin(e)}}>
-                      <div className="w-full flex justify-end mt-2 mr-2 text-lg cursor-pointer" onClick={toggleLogin}>x</div>
-                      <label className="text-xs text-gray-500 font-medium mb-3 mt-1  ">login as admin</label>
-                      <input type="email" required name="email" placeholder="Email" onChange={(e)=>{handleLoginDetailsChange(e)}}></input>
-                      <input type="password" required name="password" placeholder="Password" onChange={(e)=>{handleLoginDetailsChange(e)}} ></input>
-                      <button type="submit"> login</button>
-                      <p className="login Error">{loginError}</p>
-                    </form>
+                     <LoginForm handleLogin={handleLogin} toggleLogin={toggleLogin} handleLoginDetailsChange={handleLoginDetailsChange} loginError={loginError} />
                   }
                 </div>
               </div>
