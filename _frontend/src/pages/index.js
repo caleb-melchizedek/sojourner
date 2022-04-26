@@ -22,8 +22,8 @@ export default function Home() {
     setSearchResults({searching:true})
     console.log(searchQuery);
     e.preventDefault();
-    // const response= await fetch('https://rentit-backend.herokuapp.com/search', 
     const response= await fetch('https://rentit-backend.herokuapp.com/search', 
+    // const response= await fetch('https://rentit-backend.herokuapp.com/search', 
     {
       method: 'POST',
       // mode: 'no-cors',
@@ -58,8 +58,8 @@ export default function Home() {
     e.preventDefault();
     setLoginIn(true)
     setLoginError("")
-    // const response= await fetch('https://rentit-backend.herokuapp.com/search', 
-    const response= await fetch('http://localhost:4000/adminLogin', 
+    const response= await fetch('https://rentit-backend.herokuapp.com/search', 
+    // const response= await fetch('http://localhost:4000/adminLogin', 
     {
       method: 'POST',
       // mode: 'no-cors',
