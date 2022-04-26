@@ -56,29 +56,29 @@ export default function Home(props) {
           <title>Sojourner</title>
         </Head>
         <div className=" backdrop-blur-sm min-h-screen">
-          <div className="flex flex-col  items-stretch w-full  px-10 pt-7 z-10 ">
-            <header id="landing-text" className="w-full flex flex-row justify-between">
-              <div>
-                <Link href="/">
-                  <h1 className=" text-white text-4xl sm:text-7xl font-bold cursor-pointer">
-                    Sojourner
-                  </h1>
-                </Link>
-                <h4 className="font-semibold  text-white">
-                  Search for a suitable accommodation
-                </h4>
+        <div className="flex flex-col  items-stretch w-full px-4 md:px-10 pt-4 md:pt-7 z-10 ">
+          <header id="landing-text" className="w-full flex flex-row justify-between">
+            <div>
+              <Link href="/">
+                <h1 className=" text-white text-xl md:text-4xl sm:text-7xl font-bold cursor-pointer ">
+                  Sojourner
+                </h1>
+              </Link>
+              <h4 className="md:font-semibold text-white text-xs md:text-lg">
+                Search for a suitable accommodation
+              </h4>
+            </div>
+            <div>
+              <button className="self-center h-10 md:mt-7 p-2 text-white font-semibold text-xs md:text-base hover:bg-blue-500 transition-all" onClick={toggleLogin}>Login In as admin</button>
+              <div className="relative my-3">
+                {showLogin && 
+                  <LoginForm handleLogin={handleLogin} toggleLogin={toggleLogin} handleLoginDetailsChange={handleLoginDetailsChange} loginError={loginError} loginIn={loginIn} />
+                }
               </div>
-              <div>
-                <button className="self-center mt-7 p-2 text-white font-semibold hover:bg-blue-500 transition-all" onClick={toggleLogin}>login as admin</button>
-                <div className="relative my-3">
-                  {showLogin && 
-                     <LoginForm handleLogin={handleLogin} toggleLogin={toggleLogin} handleLoginDetailsChange={handleLoginDetailsChange} loginError={loginError} />
-                  }
-                </div>
-              </div>
-            </header>
-          </div>
-          <section className="px-10 py-4 ">
+            </div>
+          </header>
+        </div>
+          <section className="px-10 py-10 md:py-4 ">
             <div className=" bg-white px-3 md:px-14 py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
               <div className="w-full rounded-md  flex flex-col md:flex-row items-center md:items-start mb-10 ">
                 <div className="h-40 md:w-36 rounded-md mr-2">
