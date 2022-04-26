@@ -3,7 +3,7 @@ export default function SearchSection(props){
     return(
         <>
         <form className="search" onSubmit={(e)=>{handleSubmit(e)}}>
-                <div className="w-full flex justify-center mb-4 ">
+                <div className="w-full flex flex-col md:flex-row justify-center mb-4  ">
                   {/* whats your budget? lowest */}
                   <div className="flex flex-col items-center m-4">
                     <label className="text-white font-medium mb-2">I'll spend at least</label>

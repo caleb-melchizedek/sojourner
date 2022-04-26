@@ -20,18 +20,18 @@ a:hover {
   @apply my-6;
 }
 .search{
-  @apply flex flex-col items-center justify-center w-full p-2  ;
+  @apply flex flex-col items-center justify-center w-full p-2 relative  ;
 }
 
 .search input{
-  @apply h-10 w-36 p-4 rounded-md outline-none ;
+  @apply  h-5  lg:h-10 w-36 p-4 rounded-md outline-none ;
 }
 .search select{
-  @apply h-10 w-36  rounded-md outline-none ;
+  @apply h-10   lg:h-10 w-36 rounded-md outline-none ;
 }
 
 button{
-  @apply rounded-md 
+  @apply rounded-md h-5
 }
 
 .search button{

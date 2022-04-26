@@ -81,26 +81,26 @@ export default function Home() {
 
   return (  
     <>
-    <div className="bg-[url('/bg.jpg')] bg-cover bg-fixed min-h-screen">
+    <div className="bg-[url('/bg.jpg')] bg-cover bg-fixed min-h-screen min-w-full">
 
       <Head>
         <title>Sojourner</title>
       </Head>
-      <div className=" backdrop-blur-sm min-h-screen">
-        <div className="flex flex-col  items-stretch w-full  px-10 pt-7 z-10 ">
+      <div className=" backdrop-blur-sm min-h-screen min-w-full">
+        <div className="flex flex-col  items-stretch w-full px-4 md:px-10 pt-4 md:pt-7 z-10 ">
           <header id="landing-text" className="w-full flex flex-row justify-between">
             <div>
               <Link href="/">
-                <h1 className=" text-white text-4xl sm:text-7xl font-bold cursor-pointer ">
+                <h1 className=" text-white text-xl md:text-4xl sm:text-7xl font-bold cursor-pointer ">
                   Sojourner
                 </h1>
               </Link>
-              <h4 className="font-semibold  text-white">
+              <h4 className="md:font-semibold text-white text-xs md:text-lg">
                 Search for a suitable accommodation
               </h4>
             </div>
             <div>
-              <button className="self-center mt-7 p-2 text-white font-semibold hover:bg-blue-500 transition-all" onClick={toggleLogin}>Login In as admin</button>
+              <button className="self-center h-10 md:mt-7 p-2 text-white font-semibold text-xs md:text-base hover:bg-blue-500 transition-all" onClick={toggleLogin}>Login In as admin</button>
               <div className="relative my-3">
                 {showLogin && 
                   <LoginForm handleLogin={handleLogin} toggleLogin={toggleLogin} handleLoginDetailsChange={handleLoginDetailsChange} loginError={loginError} loginIn={loginIn} />
