@@ -23,36 +23,36 @@ export default function Facility({facility,rooms}) {
           <title>Sojourner</title>
         </Head>
         <div className=" backdrop-blur-sm min-h-screen">
-          <div className="flex flex-col  items-stretch w-full  px-10 pt-7 z-10 ">
-            <header id="landing-text" className="w-full flex flex-row justify-between">
+          <div className="flex flex-col  items-stretch w-full px-4 md:px-10 pt-4 md:pt-7 z-10 ">
+          <header id="landing-text" className="w-full flex flex-row justify-between items-start">
               <div>
                 <Link href="/">
-                  <h1 className=" text-white text-4xl sm:text-7xl font-bold cursor-pointer">
+                  <h1 className=" text-white text-xl md:text-4xl sm:text-7xl font-bold cursor-pointer ">
                     Sojourner
                   </h1>
                 </Link>
-                <h4 className="font-semibold  text-white">
+                <h4 className="md:font-semibold text-white text-xs md:text-lg">
                   Search for a suitable accommodation
                 </h4>
               </div>
-              <div>
-                <p className="self-center mt-7 p-2 text-white font-semibold transition-all">Welcome, {/*admin.fullname*/}</p>
-                <Link href="/"><button className="float-right  p-2 text-white font-semibold hover:bg-blue-500 transition-all">Log Out</button></Link>
+              <div className="pt-2 md:p-0">
+                <p className="self-center md:mt-7  text-white text-xs md:text-base md:font-semibold transition-all">Welcome,</p>
+                <Link href="/"><button className="float-right self-center md:h-10  p-2 text-white font-semibold text-xs md:text-base hover:bg-blue-500 transition-all">Log Out</button></Link>
               </div>
             </header>
           </div>
-          <section className="px-10 py-4 ">
-            <div className=" bg-white px-14 py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
-              <div className="w-full rounded-md  flex flex-row items-start mb-10 ">
-                <div className="h-36 w-36 rounded-md mr-2">
+          <section className="px-10 py-10 md:py-4">
+          <div className=" bg-white px-3 md:px-14 py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
+            <div className="w-full rounded-md  flex flex-col md:flex-row items-center justify-center md:items-start mb-10 ">
+            <div className="h-40 md:w-36 rounded-md mr-2 flex flex-row  ">
                     <img className="h-full w-full object-cover rounded-md" src="/bg.jpg"></img>
                 </div>
-                <div className=" h-full flex flex-row items-center justify-between  mx-10 ">
+                <div className=" h-full grow flex flex-col md:flex-row items-start md:items-center justify-between mt-2 mx-2 md:mx-10 ">
                   <div className="h-full">
-                    <h1 className=" font-semibold text-3xl ">{facility.facilityname}</h1>
-                    <p className=" text-base "> Location: {facility.location}</p>
-                    <p className=" text-base "> Email: {facility.email===""? "not available":facility.email}</p>
-                    <p className=" text-base "> Tel: {facility.tel}</p>
+                    <h1 className="  font-semibold text-lg md:text-3xl ">{facility.facilityname}</h1>
+                    <p className=" text-sm  "> Location: {facility.location}</p>
+                    <p className=" text-sm  "> Email: {facility.email===""? "not available":facility.email}</p>
+                    <p className=" text-sm  "> Tel: {facility.tel}</p>
                   </div>
                   <div className="h-full ">
                        
