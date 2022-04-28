@@ -1,6 +1,17 @@
 var bcrypt = require('bcrypt');
 var Facility= require('./facilitySchema')
 var Room = require('./roomSchema');
+const { Deta } = require('deta');
+const {imgStorage} = require('../db/env');
+
+
+// add your Project Key
+const deta = Deta(imgStorage.driveKey);
+
+// name your Drive
+const sojourner = deta.Drive("sojourner");
+
+
 
 async function handler( req, res){
   try{
@@ -11,6 +22,12 @@ async function handler( req, res){
       res.status(422).json({message:'Sorry no such facility exists within the database'});
     }
     else{
+      let roomImages=[]
+      let roomeImageUrls=[]
+      rooImages.forEach(()=>{
+        roomeImageUrls.push("")
+      })
+
       let newRoom= new Room({
         facility:facilityId,
         roomCapacity,

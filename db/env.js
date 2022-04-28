@@ -8,5 +8,9 @@ module.exports = {
         useUnifiedTopology: true,
       },
     },
+    imgStorage:{
+      driveKey:process.env.DETA_DRIVE_KEY,
+      driveID:process.env.DETA_DRIVE_ID
+    }
   };
   

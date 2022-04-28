@@ -4,10 +4,17 @@ var Facility = require('./facilitySchema');
 async function handler( req, res){
   try{
     let {facilityname,email,tel,location}= req.body;
+    if(facilityname===""){
+      res.json({errMessage:"Sorry can't have an empty facility Name"});
+    }
+    facilityName = await Facility.findOne({ facilityname: facilityname.toLowerCase() });
+    if(facilityName){
+      res.json({errMessage:'Sorry a facility already has this name'});
+    }
 
-    facilityEmail = await Facility.findOne({ email: email.toLowerCase() });
-    if(facilityEmail && email!==""){
-      res.status(422).json({message:'Sorry a facility with this email already exists'});
+    let existingEmail = await Facility.findOne({ email: email.toLowerCase() });
+    if(existingEmail){
+      res.json({errMessage:'Sorry a facility with this email already exists'});
     }
     else{
       let newFacility= new Facility({
@@ -18,7 +25,7 @@ async function handler( req, res){
         .then( async doc=>{
           console.log(doc);
         //   let allFacilities = await Facility.find({});
-        //   if (allFacilities){res.json({allFacilities})}
+          res.json({success:"yes"})
         })
       
       }catch(err){
@@ -29,7 +36,7 @@ async function handler( req, res){
     
   } catch(err){
     console.log(err);
-    return res.status(500).json({message:'Sorry could not add the new Facility'});
+    return res.json({errMessage:'Sorry could not add the new Facility'});
   }
 
 }

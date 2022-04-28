@@ -14,6 +14,7 @@ const mongoose = require('mongoose'),
         paymentCycle: {type:String, enum:["month","semester","year"], required:true},
         residentType:{type:String,enum:["Student","NSS","Any"], default:"Any"},
       },
+      images:[String],
       extraFeatures:String  
     } 
   );

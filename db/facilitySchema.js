@@ -20,7 +20,8 @@ const mongoose = require('mongoose'),
       location:{
         type:String,
         required:true
-      }
+      },
+      image:String
     }
   );
   

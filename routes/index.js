@@ -5,7 +5,11 @@ var signup = require('../db/signUp');
 var login = require('../db/login');
 var search = require('../db/search');
 var searchRoom = require('../db/searchRoom')
+
 var addFacility = require('../db/addFacility');
+var updateFacility = require('../db/updateFacility')
+var deleteFacility = require('../db/deleteFacility')
+
 var addRoom = require('../db/addRoom');
 var getAdminDashboard =require('../db/getAdminDashboard')
 var getAdminFacility= require('../db/getAdminFacility')
@@ -26,7 +30,10 @@ router.post('/search', search);
 router.get('/room/:roomId', searchRoom);
 
 router.post('/addFacility', addFacility);
+router.post('/updateFacility',updateFacility);
+router.post('/deleteFacility',deleteFacility)
 router.get('/admin/facility/:facilityId',getAdminFacility)
+
 
 router.post('/addRoom', addRoom);
 
