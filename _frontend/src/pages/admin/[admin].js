@@ -156,7 +156,7 @@ export default function Home({dashboardInfo}) {
           </section>
           </div>
           <div className="sticky bottom-2 flex flex-row w-full items-end justify-end ">
-            <button onClick={()=>toggleAddFacilityForm({name:"",email:"",tel:"",location:""})} className="bottom-10 rounded-full h-full  text-sm mr-3 flex p-2 items-center justify-center text-white bg-blue-500">Add new<img className="h-4 mx-1 white invert" src="/icons8-plus-48.png"/></button>
+            <button onClick={()=>toggleAddFacilityForm({name:"",email:"",tel:"",location:""})} className=" bottom-14 md:bottom-10 rounded-full h-full  text-sm mr-3 flex p-2 items-center justify-center text-white bg-blue-500">Add new<img className="h-4 mx-1 white invert" src="/icons8-plus-48.png"/></button>
           </div>
       </div>
     </>
