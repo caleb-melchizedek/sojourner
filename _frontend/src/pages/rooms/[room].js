@@ -81,37 +81,30 @@ export default function Home(props) {
             </div>
           </header>
         </div>
-          <section className="px-10 py-10 md:py-4 ">
+          <section className=" p-2 md:px-10 py-10 md:py-4  ">
             <div className=" bg-white px-3 md:px-14 py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
               <div className="w-full rounded-md  flex flex-col md:flex-row items-center justify-center md:items-start mb-10 ">
                 <div className="h-40 md:w-36 rounded-md mr-2 flex flex-row  ">
-                    <img className="h-full w-full object-cover rounded-md" src="/bg.jpg"></img>
+                    <img className="h-full w-full object-cover rounded-md" src={`/facilityImages/${room.facility.facilityname}_0.jpg`}></img>
                 </div>
-                <div className=" h-full grow flex flex-col md:flex-row items-start md:items-center justify-between mt-2 mx-2 md:mx-10 ">
+                <div className=" h-full  grow flex flex-col md:flex-row items-start md:items-center justify-between mt-2 mx-2 md:mx-10 ">
                   <div className="h-full">
                     <h1 className=" font-semibold text-lg md:text-3xl ">{room.facility.facilityname}</h1>
-                    <p className=" text-sm "> Location: {room.facility.location}</p>
-                    <p className=" text-sm "> Email: {room.facility.email===""? "not available":room.facility.email}</p>
-                    <p className=" text-sm "> Tel: {room.facility.tel}</p>
-                    <p className=" font-normal text-sm ">Extra features{room.extraFeatures} </p>
+                    <p className=" text-sm "> <strong>Location:</strong> {room.facility.location}</p>
+                    <p className=" text-sm "> <strong>Email:</strong> {room.facility.email===""? "not available":room.facility.email}</p>
+                    <p className=" text-sm "> <strong>Tel:</strong> {room.facility.tel}</p>
+                    <p className=" font-normal text-sm "><strong>Extra features:</strong>   {room.extraFeatures} </p>
                   </div>
-                  <div className="h-full  w-full flex flex-col items-end md:items-start ">
-                    <p className=" font-semibold md:text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
-                    <p className=" font-semibolb md:text-xl ">{room.roomCapacity} in a room</p>      
+                  <div className="h-full  w-full flex flex-col mt-3 md:mt-0 items-end md:items-start ">
+                    <p className=" font-semibold text-sm md:text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
+                    <p className=" font-semibolb text-sm md:text-xl ">{room.roomCapacity} in a room</p>      
                   </div>            
                 </div>
               </div>
               <div className=" w-full h-48 rounded-md flex flex-nowrap items-start overflow-y-hidden overflow-x-auto scroll-smooth snap-x  snap-mandatory scroll-w-0 ">
-                  <img className="h-36 w-auto object-cover rounded-md mr-4  snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4  snap-always snap-center" src={`/facilityImages/${room.facility.facilityname}_0.jpg`}></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src={`/facilityImages/${room.facility.facilityname}_1.jpg`}></img>
+                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src={`/facilityImages/${room.facility.facilityname}_2.jpg`}></img>
               </div>
             </div>
           </section>
