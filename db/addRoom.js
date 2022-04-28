@@ -22,11 +22,11 @@ async function handler( req, res){
       res.status(422).json({message:'Sorry no such facility exists within the database'});
     }
     else{
-      let roomImages=[]
-      let roomeImageUrls=[]
-      rooImages.forEach(()=>{
-        roomeImageUrls.push("")
-      })
+      // let roomImages=[]
+      // let roomeImageUrls=[]
+      // rooImages.forEach(()=>{
+      //   roomeImageUrls.push("")
+      // })
 
       let newRoom= new Room({
         facility:facilityId,
