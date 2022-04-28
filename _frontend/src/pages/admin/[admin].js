@@ -80,7 +80,7 @@ export default function Home({dashboardInfo}) {
   const  handleDelete = async ({_id})=>{
     setIsDeleting(true)
     console.log(facilityInfo);
-    const response= await fetch('https://rentit-backend.herokuapp.com/updateFacility',
+    const response= await fetch('https://rentit-backend.herokuapp.com/deleteFacility',
     // const response= await fetch('http://localhost:4000/deleteFacility',
     {
       method: 'POST',
