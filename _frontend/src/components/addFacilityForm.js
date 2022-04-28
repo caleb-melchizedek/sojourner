@@ -8,7 +8,7 @@ export default function AddFacilityForm (props){
             <input className="input" type="email"  name="email" placeholder="Email" value={facilityInfo.email} onChange={(e)=>{handleFacilityDetailsChange(e)}}></input>
             <input className="input" type="Number" required name="tel" placeholder="Telephone" value={facilityInfo.tel} onChange={(e)=>{handleFacilityDetailsChange(e)}}></input>
             <textarea required name="location" placeholder="Location" value={facilityInfo.location} onChange={(e)=>{handleFacilityDetailsChange(e)}}></textarea>
-            <input className="inputfile" type="file" required name="image" placeholder="Image" onChange={(e)=>{handleFacilityDetailsChange(e)}}></input>
+            <input disabled className="inputfile" type="file" required name="image" placeholder="Image" onChange={(e)=>{handleFacilityDetailsChange(e)}}></input>
             <div className="flex flex-nowrap px-4 justify-center"><p className=" text-red-600 text-xs ">{error}</p></div>
             
             {
