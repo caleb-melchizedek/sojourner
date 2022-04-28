@@ -155,7 +155,7 @@ export default function Home({dashboardInfo}) {
               </div>
               <div className="pt-2">
                 <p className="self-center md:mt-7  text-white text-xs md:text-base md:font-semibold transition-all">Welcome, {admin.fullname}</p>
-                <Link href="/"><button className="float-right self-center p-2 md:h-10 md:mt-7 text-white font-semibold text-xs md:text-sm hover:bg-blue-500 transition-all">Log Out</button></Link>
+                <Link href="/"><button className="float-right self-center p-2  h-8 md:h-10 md:mt-7 text-white font-semibold text-xs md:text-sm hover:bg-blue-500 transition-all">Log Out</button></Link>
               </div>
             </header>
           </div>
