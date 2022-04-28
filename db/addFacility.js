@@ -18,7 +18,7 @@ async function handler( req, res){
     }
     else{
       let newFacility= new Facility({
-        facilityname,email,tel,location
+        facilityname,email,tel,location,image:""
       });
       try{
       await newFacility.save()

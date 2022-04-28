@@ -7,7 +7,7 @@ async function handler( req, res){
     if(facilityname===""){
       res.json({errMessage:"Sorry can't have an empty facility Name"});
     }
-    let updatedFacility = await Facility.findOneAndUpdate({ _id:_id },{facilityname,email,tel,location,});
+    let updatedFacility = await Facility.findOneAndUpdate({ _id:_id },{facilityname,email,tel,location,image:""});
     if(!updatedFacility){
       res.json({errMessage:'Sorry No such facility exists on the database'});
     }
