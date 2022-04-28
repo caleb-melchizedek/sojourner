@@ -100,7 +100,7 @@ export default function Home() {
               </h4>
             </div>
             <div>
-              <button className="self-center h-10 md:mt-7 p-2 text-white font-semibold text-xs md:text-base hover:bg-blue-500 transition-all" onClick={toggleLogin}>Login In as admin</button>
+              <button className="self-center h-12 md:h-10 md:mt-7 p-2 text-white font-semibold text-xs md:text-base hover:bg-blue-500 transition-all" onClick={toggleLogin}>Login In as admin</button>
               <div className="relative my-3">
                 {showLogin && 
                   <LoginForm handleLogin={handleLogin} toggleLogin={toggleLogin} handleLoginDetailsChange={handleLoginDetailsChange} loginError={loginError} loginIn={loginIn} />
