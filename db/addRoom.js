@@ -42,6 +42,7 @@ async function handler( req, res){
       await newRoom.save()
         .then(async doc=>{
           console.log(doc);
+          res.json(doc);
           // let rooms = await Room.find({});
           // if (rooms){res.json(rooms)}
         })
