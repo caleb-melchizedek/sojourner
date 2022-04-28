@@ -19,7 +19,7 @@ var getAdminFacility= require('../db/getAdminFacility')
 
 
 /* GET home page. */
-router.post('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.send("server is up")
   return(res)
 });
