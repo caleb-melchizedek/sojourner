@@ -14,13 +14,13 @@ export default function Home({dashboardInfo}) {
 
   const [showAddFacilityForm,setshowAddFacilityForm]= useState(false)
   const [showUpdateFacilityForm,setshowUpdateFacilityForm]= useState(false)
-  const [facilityInfo,setfacilityInfo]= useState({facilityname:"",tel:"",email:"",location:"",image:"",_id:""})
+  const [facilityInfo,setfacilityInfo]= useState({facilityname:"",tel:"",email:"",location:"",image:{},_id:""})
   const [submitting,setSubmitting]= useState(false)
   const [error,setError]= useState("")
   const [isDeleting,setIsDeleting]=useState(false)
 
 
-   console.log(dashboardInfo)
+  //  console.log(dashboardInfo)
   const admin = dashboardInfo.admin;
   const facilities = dashboardInfo.facilities;
 
@@ -28,15 +28,26 @@ export default function Home({dashboardInfo}) {
     setSubmitting(true)
     console.log(facilityInfo);
     e.preventDefault();
+
+    const formData = new FormData();
+
+		formData.append('facilityname', facilityInfo.facilityname);
+    formData.append('tel', facilityInfo.tel);
+    formData.append('email', facilityInfo.email);
+    formData.append('location', facilityInfo.location);
+    formData.append('image', facilityInfo.image);
+    formData.append('_id', facilityInfo._id);
+
     const response= await fetch('https://rentit-backend.herokuapp.com/addFacility',
     // const response= await fetch('http://localhost:4000/addFacility',
     {
       method: 'POST',
       // mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(facilityInfo),
+      // headers: {
+      //   // 'Content-Type': 'application/json',
+      //   'Content-Type':'multipart/form-data'
+      // },
+      body: formData
     })
     const {success,errMessage} = await response.json()
     if(success){
@@ -104,8 +115,16 @@ export default function Home({dashboardInfo}) {
 
   const handleFacilityDetailsChange= (e)=>{
     const {name,value}= e.target;
-    setfacilityInfo({...facilityInfo, [name] : value});
-    console.log(facilityInfo);
+    if ( e.target.files){
+        let file =e.target.files[0];
+        console.log(file);
+        setfacilityInfo({...facilityInfo, [name] : file});
+        console.log(facilityInfo);
+      };
+    if(name!=="image"){
+      setfacilityInfo({...facilityInfo, [name] : value});
+      console.log(facilityInfo);
+    }
   }
   const toggleAddFacilityForm= ({name,tel,email,location,image,_id})=>{
     setfacilityInfo({facilityname:name,tel,email,location,image,_id});

@@ -1,6 +1,9 @@
 
 var express = require('express');
 var router = express.Router();
+const multer  = require('multer')
+const upload = multer({storage: multer.memoryStorage()})
+
 var signup = require('../db/signUp');
 var login = require('../db/login');
 var search = require('../db/search');
@@ -22,14 +25,14 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/adminLogin', login);
-router.get('/admin/:adminId', getAdminDashboard);
+router.get('/admin/:adminId',getAdminDashboard);
 
 router.post('/adminSignup',signup);
 
 router.post('/search', search);
 router.get('/room/:roomId', searchRoom);
 
-router.post('/addFacility', addFacility);
+router.post('/addFacility', upload.single('image'), addFacility);
 router.post('/updateFacility',updateFacility);
 router.post('/deleteFacility',deleteFacility)
 router.get('/admin/facility/:facilityId',getAdminFacility)
