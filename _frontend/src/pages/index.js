@@ -11,7 +11,7 @@ import LoginForm from "../components/loginForm"
 
 export default function Home() {
   const router = useRouter()
-  const [searchQuery,setSearchQuery]= useState({lowestPrice:"",highestPrice:"",roomCapacity:"",paymentCycle:"month"})
+  const [searchQuery,setSearchQuery]= useState({lowestPrice:"",highestPrice:"",roomCapacity:"",paymentCycle:""})
   const [searchResults,setSearchResults] =useState({results:[],searched:false,searching:false})
   const [showLogin,setShowLogin]= useState(false)
   const [loginDetails,setLoginDetails]= useState({email:"",password:""})
