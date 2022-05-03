@@ -32,8 +32,8 @@ router.post('/adminSignup',signup);
 router.post('/search', search);
 router.get('/room/:roomId', searchRoom);
 
-router.post('/addFacility', upload.single('image'), addFacility);
-router.post('/updateFacility',updateFacility);
+router.post('/addFacility', upload.array('photos'), addFacility);
+router.post('/updateFacility',upload.array('photos'),updateFacility);
 router.post('/deleteFacility',deleteFacility)
 router.get('/admin/facility/:facilityId',getAdminFacility)
 

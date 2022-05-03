@@ -21,7 +21,7 @@ const mongoose = require('mongoose'),
         type:String,
         required:true
       },
-      image:String,
+      images:[String],
       
     }
   );

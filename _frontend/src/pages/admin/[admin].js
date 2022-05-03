@@ -14,7 +14,7 @@ export default function Home({dashboardInfo}) {
 
   const [showAddFacilityForm,setshowAddFacilityForm]= useState(false)
   const [showUpdateFacilityForm,setshowUpdateFacilityForm]= useState(false)
-  const [facilityInfo,setfacilityInfo]= useState({facilityname:"",tel:"",email:"",location:"",image:{},_id:""})
+  const [facilityInfo,setfacilityInfo]= useState({facilityname:"",tel:"",email:"",location:"",images:[],_id:""})
   const [submitting,setSubmitting]= useState(false)
   const [error,setError]= useState("")
   const [isDeleting,setIsDeleting]=useState(false)
@@ -29,25 +29,28 @@ export default function Home({dashboardInfo}) {
     console.log(facilityInfo);
     e.preventDefault();
 
-    const formData = new FormData();
+    const data = new FormData();
 
-		formData.append('facilityname', facilityInfo.facilityname);
-    formData.append('tel', facilityInfo.tel);
-    formData.append('email', facilityInfo.email);
-    formData.append('location', facilityInfo.location);
-    formData.append('image', facilityInfo.image);
-    formData.append('_id', facilityInfo._id);
+		data.append('facilityname', facilityInfo.facilityname);
+    data.append('tel', facilityInfo.tel);
+    data.append('email', facilityInfo.email);
+    data.append('location', facilityInfo.location);
+    
+    data.append('_id', facilityInfo._id);
 
+    facilityInfo.images.forEach(element => {
+      data.append('photos', element)
+    });
+
+    console.table([...data])
     const response= await fetch('https://rentit-backend.herokuapp.com/addFacility',
     // const response= await fetch('http://localhost:4000/addFacility',
     {
       method: 'POST',
       // mode: 'no-cors',
-      // headers: {
-      //   // 'Content-Type': 'application/json',
-      //   'Content-Type':'multipart/form-data'
-      // },
-      body: formData
+      headers: {
+      },
+      body: data,
     })
     const {success,errMessage} = await response.json()
     if(success){
@@ -66,26 +69,39 @@ export default function Home({dashboardInfo}) {
     setSubmitting(true)
     console.log(facilityInfo);
     e.preventDefault();
-    const response= await fetch('https://rentit-backend.herokuapp.com/updateFacility',
+
+    const data = new FormData();
+
+    data.append('facilityname', facilityInfo.facilityname);
+    data.append('tel', facilityInfo.tel);
+    data.append('email', facilityInfo.email);
+    data.append('location', facilityInfo.location);
+    facilityInfo.images.forEach(element => {
+      data.append('photos', element)
+    });
+    data.append('_id', facilityInfo._id);
+
+     const response= await fetch('https://rentit-backend.herokuapp.com/updateFacility',
     // const response= await fetch('http://localhost:4000/updateFacility',
     {
       method: 'POST',
       // mode: 'no-cors',
       headers: {
-        'Content-Type': 'application/json',
+        // 'Content-Type': 'application/json',
+      // 'Content-Type':'multipart/form-data'
       },
-      body: JSON.stringify(facilityInfo),
+      // body: JSON.stringify(facilityInfo),
+      body: data
     })
     const {success,errMessage} = await response.json()
     if(success){
       console.log(success); 
-      router.reload();
+       router.reload();
     } else{
       setSubmitting(false)
       setError(errMessage)
       console.log(errMessage)
     }
-   
   }
 
   const  handleDelete = async ({_id})=>{
@@ -104,34 +120,37 @@ export default function Home({dashboardInfo}) {
     const {success,errMessage} = await response.json()
     if(success){
       console.log(success); 
-      router.reload();
+       router.reload();
     } else{
       setIsDeleting(false)
       setError(errMessage)
       console.log(errMessage)
     }
-   
   }
 
   const handleFacilityDetailsChange= (e)=>{
-    const {name,value}= e.target;
-    if ( e.target.files){
-        let file =e.target.files[0];
-        console.log(file);
-        setfacilityInfo({...facilityInfo, [name] : file});
-        console.log(facilityInfo);
+    const {name,value,files}= e.target;
+    if ( files){
+        console.log(files);
+        let imgList=[]
+        for(var i=0; i<files.length;i++){
+          imgList[i]= files[i];
+        }
+        setfacilityInfo({...facilityInfo, [name] :imgList});
+        
       };
-    if(name!=="image"){
+      console.log(facilityInfo);
+    if(name!=="images"){
       setfacilityInfo({...facilityInfo, [name] : value});
       console.log(facilityInfo);
     }
   }
-  const toggleAddFacilityForm= ({name,tel,email,location,image,_id})=>{
-    setfacilityInfo({facilityname:name,tel,email,location,image,_id});
+  const toggleAddFacilityForm= ({name,tel,email,location,images,_id})=>{
+    setfacilityInfo({facilityname:name,tel,email,location,images,_id});
     setshowAddFacilityForm(!showAddFacilityForm);
   }
-  const toggleUpdateFacilityForm= ({name,tel,email,location,image,_id})=>{
-    setfacilityInfo({facilityname:name,tel,email,location,image,_id});
+  const toggleUpdateFacilityForm= ({name,tel,email,location,images,_id})=>{
+    setfacilityInfo({facilityname:name,tel,email,location,images,_id});
     setshowUpdateFacilityForm(!showUpdateFacilityForm);
   }
   return (
@@ -195,3 +214,16 @@ export async function getServerSideProps(context) {
     }, // will be passed to the page component as props
   }
 }
+
+
+
+     // let newEl = {
+      //   fieldname: 'photos',
+      //   originalname: element.name,
+      //   type: element.type,
+      //   buffer: element.arrayBuffer
+      // }
+      // file_custom.push(newEl);
+      // console.log("arrayBuffer: ",element.arrayBuffer())
+      // console.log("blob: ",element.blob)
+      // let buf = Buffer.from(element.arrayBuffer)

@@ -45,7 +45,7 @@ export default function Facility({facility,rooms}) {
           <div className=" bg-white px-3 md:px-14 py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
             <div className="w-full rounded-md  flex flex-col md:flex-row items-center justify-center md:items-start mb-10 ">
             <div className="h-40 md:w-36 rounded-md mr-2 flex flex-row  ">
-                    <img className="h-full w-full object-cover rounded-md" src="/bg.jpg"></img>
+                    <img className="h-full w-full object-cover rounded-md" src={facility.images[0]}></img>
                 </div>
                 <div className=" h-full grow flex flex-col md:flex-row items-start md:items-center justify-between mt-2 mx-2 md:mx-10 ">
                   <div className="h-full">
@@ -60,16 +60,12 @@ export default function Facility({facility,rooms}) {
                 </div>
               </div>
               <div className=" w-full h-48 rounded-md flex flex-nowrap items-start overflow-y-hidden overflow-x-auto scroll-smooth snap-x  snap-mandatory scroll-w-0 ">
-                  <img className="h-36 w-auto object-cover rounded-md mr-4  snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
-                  <img className="h-36 w-auto object-cover rounded-md mr-4 snap-always snap-center" src="/bg.jpg"></img>
+                  {facility.images.map((img)=>{
+                    return(
+                      <img className="h-36 w-auto object-cover rounded-md mr-4  snap-always snap-center" key={img} src={img}></img>  
+                    )
+                 
+                  })}
               </div>
             </div>
           </section>

@@ -1,12 +1,12 @@
 import Link from 'next/link'
 export default function FacilityCards({facility,showFacilityForm,handleDelete,isDeleting}){
-  const {facilityname,tel,email,location,_id,image}=facility
+  const {facilityname,tel,email,location,_id,images}=facility
   return(
     <>
       <Link href={`/admin/facility/${facility._id}`}  >
         <div className="w-full rounded-md bg-white h-72  md:h-44 flex flex-col md:flex-row items-start p-2 my-2 cursor-pointer">
           <div className=" h-36 w-full md:h-36 md:w-36 rounded-md md:mr-2 flex justify-center">
-            <img className="h-full w-full object-cover rounded-md " src={`/facilityImages/${facilityname.toLowerCase()}_0.jpg`} alt="Photo" ></img>
+            <img className="h-full w-full object-cover rounded-md " src={images[0]} alt="Photo" ></img>
           </div>
           <div className=" md:truncate  h-full w-full flex flex-col mt-2 md:ml-10 ">
             <h1 className=" font-semibold text-lg md:text-3xl  ">{facilityname}</h1>

@@ -5,8 +5,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var {database} = require('./db/env');
+var {database,cloudinaryConfig} = require('./db/env');
 var cors= require('cors');
+var cloudinary = require('cloudinary')
+
+cloudinary.config({ 
+  cloud_name:cloudinaryConfig.cloud_name, 
+  api_key:cloudinaryConfig.api_key,
+  api_secret:cloudinaryConfig.api_secret,
+});
+
 
 mongoose.connect(database.url,database.options)
   .then(console.log('db connection done'))

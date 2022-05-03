@@ -1,23 +1,14 @@
-var bcrypt = require('bcrypt');
+const cloudinary = require('cloudinary').v2
+const streamifier = require('streamifier')
+
 var Facility = require('./facilitySchema');
-var {imgStorage} = require('../db/env');
-const { Deta } = require("deta");
-
-// add your Project Key
-const deta = Deta(imgStorage.driveKey);
-// name your Drive
-const facilityPhotos = deta.Drive("facilityPhotos");
-// call inside an async function ;)
-
 
 async function handler( req, res){
-  res.json({errMessage:"Sorry can't have an empty facility Name"});
    try{
-     
-    let FacilityImg =req.file;
-    console.log(FacilityImg);
-    let {facilityname,email,tel,location}= req.body;
-    console.log(req.file);
+    let FacilityImgs =req.files;
+    
+    let {facilityname,email,tel,location,}= req.body;
+    console.log(req.files)
     if(facilityname===""){
       res.json({errMessage:"Sorry can't have an empty facility Name"});
     }
@@ -25,39 +16,63 @@ async function handler( req, res){
     if(facilityName){
       res.json({errMessage:'Sorry a facility already has this name'});
     }
-
-    let existingEmail = await Facility.findOne({ email: email.toLowerCase() });
+    let existingEmail=null
+    if(email!==""){
+       existingEmail= await Facility.findOne({ email: email.toLowerCase() });
+    }
     if(existingEmail){
       res.json({errMessage:'Sorry a facility with this email already exists'});
     }
     else{
-      let imgExtension = FacilityImg.Originalname.split(".").pop();
-     console.log(imgExtension)
-    //  let imgUploaded= await facilityPhotos.put(`${facilityname}.${imgExtension}`, {data:FacilityImg.Buffer});
-    if(imgUploaded){
-      // const buf = await facilityPhotos.get(`${facilityname}.${imgExtension}`);
-      let newFacility= new Facility({
-        facilityname,email,tel,location,image:`${facilityname}.${imgExtension}`
-      });
-    }
-      
-      try{
-      await newFacility.save()
-        .then( async doc=>{
-          console.log(doc);
-        //   let allFacilities = await Facility.find({});
-          res.json({success:"yes"})
-        })
-      
-      }catch(err){
-        console.log(`couldnt save new facility to database due to error:${err}`);
-        res.end()
+      let streamUpload = (pld) => {
+        return new Promise((resolve, reject) => {
+          let stream = cloudinary.uploader.upload_stream(
+            {
+              folder: "sojourner"
+            },
+            (error, result) => {
+              if (result) {
+                resolve(result);
+              } else {
+                reject(error);
+              }
+            }
+          );
+          streamifier.createReadStream(pld.buffer).pipe(stream);
+        });
       }
+      let imgUploaded=[]
+      if(FacilityImgs){
+        for( var i=0; i<FacilityImgs.length;i++){
+          imgUploaded[i] = (await streamUpload(FacilityImgs[i])).url;
+        }
+      }
+      
+      // if(imgUploaded){res.json(imgUploaded)}
+        
+      if(imgUploaded){
+        let newFacility= new Facility({
+          facilityname,email,tel,location,images:imgUploaded
+        });
+         // console.log(newFacility)
+        try{
+        await newFacility.save()
+          .then( async doc=>{
+            console.log(doc);
+          //   let allFacilities = await Facility.find({});
+            res.json({success:"yes"})
+          })
+        
+        }catch(err){
+          console.log(`couldnt save new facility to database due to error:${err}`);
+          res.end()
+        }
+      } 
     }
-    
-  } catch(err){
-    console.log(err);
-    return res.json({errMessage:'Sorry could not add the new Facility'});
+  }
+  catch(err){
+  console.log(err);
+  return res.json({errMessage:'Sorry could not add the new Facility'});
   }
 
 }
