@@ -1,5 +1,6 @@
 import Link from 'next/link'
 export default function SearchResults({searchResult,searched}){
+  console.log(searchResult)
   return(
     <>
       <Link href={`/rooms/${searchResult._id}`}  >

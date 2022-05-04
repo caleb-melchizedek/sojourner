@@ -1,7 +1,7 @@
 const cloudinary = require('cloudinary').v2
 const streamifier = require('streamifier')
 
-
+var Rooms = require('./roomSchema')
 var Facility = require('./facilitySchema');
 
 async function handler( req, res){
@@ -21,13 +21,17 @@ async function handler( req, res){
           if (error)throw(error)
           console.log(result) })
       })
-      let deletedFacility = await Facility.findOneAndDelete({ _id:_id });
-      if(!deletedFacility){
-        res.json({errMessage:'Sorry No such facility exists on the database'});
-      }
-      else{
+      let deletedRooms = await Rooms.deleteMany({facility:_id})
+      if(deletedRooms){
+        let deletedFacility = await Facility.findOneAndDelete({ _id:_id });
+        if(!deletedFacility){
+          res.json({errMessage:'Sorry No such facility exists on the database'});
+        }else{
           res.json({success:"yes"})
+        }
+
       }
+      
       }
 
     
