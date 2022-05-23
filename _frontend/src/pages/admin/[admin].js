@@ -76,9 +76,11 @@ export default function Home({dashboardInfo}) {
     data.append('tel', facilityInfo.tel);
     data.append('email', facilityInfo.email);
     data.append('location', facilityInfo.location);
-    facilityInfo.images.forEach(element => {
-      data.append('photos', element)
-    });
+    if(facilityInfo.images){
+        facilityInfo.images.forEach(element => {
+        data.append('photos', element)
+      });
+    }
     data.append('_id', facilityInfo._id);
 
      const response= await fetch('https://rentit-backend.herokuapp.com/updateFacility',
@@ -86,11 +88,7 @@ export default function Home({dashboardInfo}) {
     {
       method: 'POST',
       // mode: 'no-cors',
-      headers: {
-        // 'Content-Type': 'application/json',
-      // 'Content-Type':'multipart/form-data'
-      },
-      // body: JSON.stringify(facilityInfo),
+      headers: {},
       body: data
     })
     const {success,errMessage} = await response.json()
