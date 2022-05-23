@@ -9,7 +9,7 @@ export default function UpdateFacilityForm (props){
             <input className="input" type="Number" name="tel" placeholder="Telephone" value={facilityInfo.tel} onChange={(e)=>{handleFacilityDetailsChange(e)}}></input>
             <textarea required name="location" placeholder="Location" value={facilityInfo.location} onChange={(e)=>{handleFacilityDetailsChange(e)}}></textarea>
             <label className="text-xs text-gray-500 font-medium  ">Add more photos of the facility</label>
-            <input multiple className="inputfile"  type="file" required name="images" placeholder="Image" accept="image/*" value={facilityInfo.img} onChange={(e)=>{handleFacilityDetailsChange(e)}}></input>
+            <input multiple className="inputfile"  type="file" name="images" placeholder="Image" accept="image/*" value={facilityInfo.img} onChange={(e)=>{handleFacilityDetailsChange(e)}}></input>
             <div className="flex flex-nowrap px-4 justify-center"><p className=" text-red-600 text-xs ">{error}</p></div>
             
             {
