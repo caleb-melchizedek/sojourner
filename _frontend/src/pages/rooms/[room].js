@@ -83,21 +83,21 @@ export default function Home(props) {
         </div>
           <section className=" p-2 md:px-10 py-10 md:py-4  ">
             <div className=" bg-white px-3 md:px-14 py-6 flex flex-col grow w-full items-center justify-center rounded-lg">
-              <div className="w-full rounded-md  flex flex-col md:flex-row items-center justify-center md:items-start mb-10 ">
-                <div className="h-40 md:w-36 rounded-md mr-2 flex flex-row  ">
+              <div className="w-full rounded-md  flex flex-col md:flex-row items-center  md:items-start mb-10 ">
+                <div className="h-40 md:w-40 rounded-md mr-2 flex flex-row  ">
                     <img className="h-full w-full object-cover rounded-md" src={room.facility.images[0]} alt="Photo"></img>
                 </div>
-                <div className=" h-full  grow flex flex-col md:flex-row items-start md:items-center justify-between mt-2 mx-2 md:mx-10 ">
-                  <div className="h-full">
+                <div className=" h-full grow flex flex-col lg:flex-row items-start md:items-center justify-items-stretch mt-2 mx-2 md:mx-10 ">
+                  <div className="">
                     <h1 className=" font-semibold text-lg md:text-3xl ">{room.facility.facilityname}</h1>
                     <p className=" text-sm "> <strong>Location:</strong> {room.facility.location}</p>
                     <p className=" text-sm "> <strong>Email:</strong> {room.facility.email===""? "not available":room.facility.email}</p>
                     <p className=" text-sm "> <strong>Tel:</strong> {room.facility.tel}</p>
                     <p className=" font-normal text-sm "><strong>Extra features:</strong>   {room.extraFeatures} </p>
                   </div>
-                  <div className="h-full  w-full flex flex-col mt-3 md:mt-0 items-end md:items-start ">
-                    <p className=" font-semibold text-sm md:text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
-                    <p className=" font-semibolb text-sm md:text-xl ">{room.roomCapacity} in a room</p>      
+                  <div className="h-full  w-full flex flex-col mt-3 md:mt-0 lg:items-end  ">
+                    <p className=" font-semibold text-l lg:text-xl ">{room.pricing.currency} {room.pricing.amount} per {room.pricing.paymentCycle}</p>
+                    <p className=" font-semibold text-l lg:text-xl ">{room.roomCapacity} in a room</p>      
                   </div>            
                 </div>
               </div>
