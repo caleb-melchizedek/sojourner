@@ -17,6 +17,23 @@ export default function Home() {
   const [loginDetails,setLoginDetails]= useState({email:"",password:""})
   const [loginIn,setLoginIn]= useState(false)
   const [loginError,setLoginError]= useState("")
+  const [showHelp,setShowHelp]= useState(false)
+
+
+const toggleHelp= ()=>{
+  let a= document.querySelector(".help-text")
+   console.log(a.style.marginRight )
+   console.log(showHelp)
+  if (showHelp){
+    a.style.marginRight="-50rem"
+    setShowHelp(false)
+  }
+  else{
+    a.style.marginRight="0rem"
+    setShowHelp(true)
+  }
+}
+
 
   const  handleSubmit = async (e)=>{
     setSearchResults({searching:true})
@@ -133,29 +150,18 @@ export default function Home() {
               </div>
             )
           :null 
-           
           
         }
 
+<         div className=" fixed bottom-2 right-2 flex flex-col w-full items-end justify-end overflow-hidden ">
+            <div className="help-text" >
+              <p className="text-sm  flex px-4 py-2 items-center justify-center ">
+                Need help contacting a hostel? Call our help line on: &nbsp;<b>055 123 4567</b>
+              </p>
+            </div>
+            <button onClick={()=>toggleHelp()} className=" bottom-14 z-10 md:bottom-10 rounded-full h-full  text-sm  flex px-4 py-2 items-center justify-center text-white bg-blue-500">Help<img className="h-4 mx-1 white invert" src="/icons8-plus-48.png"/></button>
+          </div>
            
-            {/* <div className="w-full rounded-md bg-white h-40 flex flex-row items-start p-2 my-4">
-              <div className="h-36 w-36 rounded-md mr-2">
-                <img className="h-full w-full object-cover rounded-md" src="/bg.jpg"></img>
-              </div>
-              <div className=" h-full flex flex-col ml-10 ">
-                <h1 className=" font-semibold text-3xl ">Facility Name</h1>
-                <p className="  text-sm ">location</p>
-                <p className=" font-semibold text-xl ">Price per Payment Cycle</p>
-                <p className=" font-semibold text-xl ">Room Capacity</p>
-                
-              </div>
-            </div> */}
-          
-
-          {/* <footer className="flex text-sm self-end justify-center w-full h-10">
-            Powered by{" "}
-            <img src="/Mag_Mel-log.png" alt="some Logo" className="h-7 ml-4" />
-          </footer> */}
         </section>
         </div>
       </div>

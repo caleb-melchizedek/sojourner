@@ -52,7 +52,7 @@ button{
 }
 
 .facilityForm{
-  @apply w-11/12 md:w-3/4 md:px-2 flex flex-col items-center bg-white p-2 rounded-lg fixed top-32 md:top-60 z-10
+  @apply w-11/12 md:w-3/4 md:px-2 flex flex-col items-center bg-white p-2 rounded-lg fixed top-32 md:top-52 z-10
 }
 .facilityForm .input{
   @apply h-7 w-11/12 md:w-1/2 p-4 rounded-md outline-none m-2  border border-gray-400;
@@ -65,4 +65,8 @@ button{
 }
 .facilityForm button{
   @apply h-7 w-24 font-normal text-sm m-2 bg-blue-500 text-white transition-all ;
+}
+.help-text{
+  @apply relative -bottom-0 rounded-full transition-all duration-500 ease-in-out my-3 bg-white;
+  margin-right:-50rem;
 }
