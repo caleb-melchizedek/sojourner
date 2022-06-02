@@ -133,7 +133,7 @@ const toggleHelp= ()=>{
         { (searchResults.searching)? 
             (
               <div className="flex flex-col items-center justify-center">
-              <img className="h-36" src="Infinity-1s-200px.svg"></img>
+              <img className="h-36" src="/Infinity-1s-200px.svg"></img>
               {/* <p className="font-semibold text-2xl  text-white ">Searching for good places</p> */}
               </div>
             ):  
