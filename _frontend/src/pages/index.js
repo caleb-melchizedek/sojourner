@@ -121,13 +121,13 @@ const toggleHelp= ()=>{
           </h1>
           
           <Link href="/home"><button className="self-center h-12 w-48 mt-28 md:w-1/3 md:h-10 md:mt-30 p-2 text-white  bg-blue-500 font-semibold text-xs md:text-base hover:bg-white hover:text-black  transition-all">Search</button></Link>
-          <div className=" fixed bottom-2 right-2 flex flex-col w-full items-end justify-end overflow-hidden ">
+          <div className=" fixed bottom-2 right-2 flex  w-full items-end justify-end overflow-hidden ">
             <div className="help-text" >
-              <p className="text-sm px-4 py-2 items-center justify-center ">
+              <p className=" text-xs px-4  md:text-sm md:py-2  items-center justify-center ">
                 Need help contacting a hostel? Call our help line on: &nbsp;<b>055 123 4567</b>
               </p>
             </div>
-            <button onClick={()=>toggleHelp()} className=" bottom-14 z-10 md:bottom-10 rounded-full h-full  text-sm  flex px-4 py-2 items-center justify-center text-white bg-blue-500">Help<img className="h-4 mx-1 white " src="/icons8-help-30.png"/></button>
+            <button onClick={()=>toggleHelp()} className=" bottom-14  md:bottom-10 rounded-full h-full  text-sm  flex mx-1 md:ml-10 px-4 py-2 items-center justify-center text-white bg-blue-500">Help<img className="h-4 mx-1 white " src="/icons8-help-30.png"/></button>
           </div>
            
         </section>

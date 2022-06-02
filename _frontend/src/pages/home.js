@@ -153,7 +153,7 @@ const toggleHelp= ()=>{
           
         }
 
-<         div className=" fixed bottom-2 right-2 flex  w-full items-end justify-end overflow-hidden ">
+          <div className=" fixed bottom-2 right-2 flex  w-full items-end justify-end overflow-hidden ">
             <div className="help-text" >
               <p className=" text-xs px-4  md:text-sm md:py-2  items-center justify-center ">
                 Need help contacting a hostel? Call our help line on: &nbsp;<b>055 123 4567</b>
