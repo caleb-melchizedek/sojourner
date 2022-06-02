@@ -118,14 +118,14 @@ const toggleHelp= ()=>{
             </div>
             <div>
               <button className="self-center h-12 md:h-10 md:mt-7 p-2 text-black bg-white font-semibold text-xs md:text-base hover:bg-blue-500 hover:text-white transition-all" onClick={toggleLogin}>Login in as admin</button>
-              <div className="relative my-3 z-10">
+              <div className="relative my-3 ">
                 {showLogin && 
                   <LoginForm handleLogin={handleLogin} toggleLogin={toggleLogin} handleLoginDetailsChange={handleLoginDetailsChange} loginError={loginError} loginIn={loginIn} />
                 }
               </div>
             </div>
           </header>
-            <div className="flex flex-row z-10 grow w-full items-center justify-center my-6 ">
+            <div className="flex flex-row  grow w-full items-center justify-center my-6 ">
               <SearchSection handleSubmit={handleSubmit} handleSearchParamChange={handleSearchParamChange} />
             </div>
         </div>
