@@ -11,6 +11,8 @@ import LoginForm from "../components/loginForm"
 
 export default function Home() {
   const router = useRouter()
+  const [searchQuery,setSearchQuery]= useState({lowestPrice:"",highestPrice:"",roomCapacity:"",paymentCycle:""})
+  const [searchResults,setSearchResults] =useState({results:[],searched:false,searching:false})
   const [showLogin,setShowLogin]= useState(false)
   const [loginDetails,setLoginDetails]= useState({email:"",password:""})
   const [loginIn,setLoginIn]= useState(false)
@@ -33,6 +35,32 @@ const toggleHelp= ()=>{
 }
 
 
+  const  handleSubmit = async (e)=>{
+    setSearchResults({searching:true})
+    console.log(searchQuery);
+    e.preventDefault();
+    const response= await fetch('https://rentit-backend.herokuapp.com/search', 
+    // const response= await fetch('https://rentit-backend.herokuapp.com/search', 
+    {
+      method: 'POST',
+      // mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(searchQuery),
+    })
+    const results = await response.json()
+    console.log(results);
+      setSearchResults({results,searched:true,searching:false})
+      console.log(searchResults);
+   
+  }
+
+  const handleSearchParamChange = (e)=>{
+    const {name,value}= e.target;
+    setSearchQuery({...searchQuery, [name] : value});
+    console.log(searchQuery);
+  }
   const toggleLogin= ()=>{
     setShowLogin(!showLogin);
   }
@@ -67,14 +95,13 @@ const toggleHelp= ()=>{
       console.log(errMessage)
     }
   }
+
   return (  
     <>
-    <div className="bg-[url('/bg.jpg')] bg-cover bg-fixed min-h-screen min-w-full">
+    <div className="bg-[url('/UPSAcampus.jpg')] bg-cover bg-fixed min-h-screen min-w-full">
 
       <Head>
-        <title>Rent It</title>Looking for a Hostel near UPSA
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-        <script defer src="/assets/scripts/LPageAnim.js"></script>
+        <title>Rent It</title>
       </Head>
       <div className=" backdrop-blur-sm backdrop-opacity-50  min-h-screen min-w-full">
         <div className="flex flex-col  items-stretch w-full px-4 md:px-10 pt-4 md:pt-7 z-10 ">
@@ -98,30 +125,35 @@ const toggleHelp= ()=>{
               </div>
             </div>
           </header>
-            
+            <div className="flex flex-row grow w-full items-center justify-center my-6 ">
+              <SearchSection handleSubmit={handleSubmit} handleSearchParamChange={handleSearchParamChange} />
+            </div>
         </div>
-        <section className="px-10 py-4 flex flex-col">    
-          <h1 className="ml11 text-white text-base md:text-5xl font-bold">
-            <span className="text-wrapper relative inline-block p-2">
-              <span className="line line1   absolute left-0 top-0 height-full w-2 bg-black origin-center"></span>
-              <span className="letters">Looking for a hostel near UPSA?</span>
-            </span>
-          </h1>
-          <h1 className="ml12 text-white text-sm md:text-2xl font-bold">
-            <span className="text-wrapper relative inline-block p-2">
-              <span className="line line1   absolute left-0 top-0 height-full w-2 bg-black origin-center"></span>
-              <span className="letters">Search based on price range, payment cycle, and room capacity</span>
-            </span>
-          </h1>
-          <h1 className="ml13 text-white text-xs md:text-xl font-bold">
-            <span className="text-wrapper relative inline-block p-2">
-              <span className="line line1    absolute left-0 top-0 height-full w-2 bg-black origin-center"></span>
-              <span className="letters">Click "Search" below</span>
-            </span>
-          </h1>
+        <section className="px-10 py-4">
+        { (searchResults.searching)? 
+            (
+              <div className="flex flex-col items-center justify-center">
+              <img className="h-36" src="Infinity-1s-200px.svg"></img>
+              {/* <p className="font-semibold text-2xl  text-white ">Searching for good places</p> */}
+              </div>
+            ):  
+            (searchResults.searched===true && searchResults.results.length>0)?
+            searchResults.results.map(res=>{
+              //return String(res)
+            return( 
+                <SearchResults key={res._id} searchResult={res} />   
+              )
+            })
+          :(searchResults.searched===true && searchResults.results.length===0)?
+            ( <div className="flex flex-row items-center justify-center">
+                <h2 className="font-semibold text-3xl  text-white ">Sorry could not find any such room</h2>
+              </div>
+            )
+          :null 
           
-          <Link href="/home"><button className="self-center h-12 w-48 md:w-1/3 md:h-10 md:mt-7 p-2 text-white  bg-blue-500 font-semibold text-xs md:text-base hover:bg-white hover:text-black  transition-all">Search</button></Link>
-          <div className=" fixed bottom-2 right-2 flex flex-col w-full items-end justify-end overflow-hidden ">
+        }
+
+<         div className=" fixed bottom-2 right-2 flex flex-col w-full items-end justify-end overflow-hidden ">
             <div className="help-text" >
               <p className="text-sm px-4 py-2 items-center justify-center ">
                 Need help contacting a hostel? Call our help line on: &nbsp;<b>055 123 4567</b>

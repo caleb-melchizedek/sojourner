@@ -70,3 +70,10 @@ button{
   @apply relative -bottom-0 rounded-full transition-all duration-500 ease-in-out my-3 ml-5 bg-white;
   margin-right:-50rem;
 }
+
+
+
+.ml11 .letter {
+  display: inline-block;
+  line-height: 1em;
+}

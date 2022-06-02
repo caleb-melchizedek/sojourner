@@ -155,7 +155,7 @@ export default function Home({dashboardInfo}) {
     <>
       <div className="bg-[url('/bg.jpg')] bg-cover bg-fixed min-h-screen relative">
         <Head>
-          <title>Sojourner</title>
+          <title>Rent It</title>
         </Head>
         <div className=" backdrop-blur-sm min-h-screen min-w-full">
           <div className="flex flex-col  items-stretch w-full px-4 md:px-10 pt-4 md:pt-7 z-10  ">
@@ -163,16 +163,16 @@ export default function Home({dashboardInfo}) {
               <div>
                 <Link href="/">
                   <h1 className=" text-white text-xl md:text-4xl sm:text-7xl font-bold cursor-pointer ">
-                    Sojourner
+                  Rent It
                   </h1>
                 </Link>
                 <h4 className="md:font-semibold text-white text-xs md:text-lg">
-                  Search for a suitable accommodation
+                Find a hostel near the UPSA Campus
                 </h4>
               </div>
               <div className="pt-2">
-                <p className="self-center md:mt-7  text-white text-xs md:text-base md:font-semibold transition-all">Welcome, {admin.fullname}</p>
-                <Link href="/"><button className="float-right self-center p-2  h-8 md:h-10 md:mt-7 text-white font-semibold text-xs md:text-sm hover:bg-blue-500 transition-all">Log Out</button></Link>
+                <p className="self-center md:mt-7  text-black text-xs md:text-base md:font-semibold transition-all">Welcome, {admin.fullname}</p>
+                <Link href="/"><button className="float-right self-center py-2 px-4 h-8 md:h-10 md:mt-7 text-black font-semibold text-xs md:text-sm hover:bg-blue-500 hover:text-white transition-all">Log Out</button></Link>
               </div>
             </header>
           </div>
