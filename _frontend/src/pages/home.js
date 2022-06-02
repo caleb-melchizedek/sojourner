@@ -98,7 +98,7 @@ const toggleHelp= ()=>{
 
   return (  
     <>
-    <div className="bg-[url('/UPSAcampus.jpg')] bg-cover bg-fixed min-h-screen min-w-full">
+    <div className="bg-[url('/bg.jpg')] bg-cover bg-fixed min-h-screen min-w-full">
 
       <Head>
         <title>Rent It</title>
