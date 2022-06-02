@@ -129,7 +129,7 @@ const toggleHelp= ()=>{
               <SearchSection handleSubmit={handleSubmit} handleSearchParamChange={handleSearchParamChange} />
             </div>
         </div>
-        <section className="px-10 py-4">
+        <section className=" px-1 py-2 md:px-10 md:py-4">
         { (searchResults.searching)? 
             (
               <div className="flex flex-col items-center justify-center">

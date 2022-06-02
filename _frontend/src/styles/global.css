@@ -67,7 +67,7 @@ button{
   @apply h-7 w-24 font-normal text-sm m-2 bg-blue-500 text-white transition-all ;
 }
 .help-text{
-  @apply relative -bottom-0 rounded-full transition-all duration-500 z-50 ease-in-out md:mx-10  ml-5  bg-white;
+  @apply relative -bottom-0 rounded-full transition-all duration-500 z-50 ease-in-out  md:mx-10  ml-5  bg-white;
   margin-right:-50rem;
 }
 
