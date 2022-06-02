@@ -4,7 +4,7 @@ export default function SearchResults({searchResult,searched}){
   return(
     <>
       <Link href={`/rooms/${searchResult._id}`}  >
-        <div className="w-full rounded-md bg-white h-68  md:h-44 flex flex-col md:flex-row items-start p-2 my-2 cursor-pointer">
+        <div className="w-full rounded-md bg-white h-68  md:h-44 flex flex-col md:flex-row items-start p-2 my-4  cursor-pointer">
           <div className=" h-36 w-full md:h-36 md:w-36 rounded-md md:mr-2 flex justify-center">
             <img className="h-full w-full object-cover rounded-md " src={searchResult.facility.images[0]} alt="Photo" ></img>
           </div>
