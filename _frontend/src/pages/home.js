@@ -159,7 +159,7 @@ const toggleHelp= ()=>{
                 Need help contacting a hostel? Call our help line on: &nbsp;<b>055 123 4567</b>
               </p>
             </div>
-            <button onClick={()=>toggleHelp()} className=" bottom-14 z-10 md:bottom-10 rounded-full h-full  text-sm  flex px-4 py-2 items-center justify-center text-white bg-blue-500">Help<img className="h-4 mx-1 white " src="/icons8-help-30.png"/></button>
+            <button onClick={()=>toggleHelp()} className=" bottom-14  md:bottom-10 rounded-full h-full  text-sm  flex px-4 py-2 items-center justify-center text-white bg-blue-500">Help<img className="h-4 mx-1 white " src="/icons8-help-30.png"/></button>
           </div>
            
         </section>
