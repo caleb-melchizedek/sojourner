@@ -125,7 +125,7 @@ const toggleHelp= ()=>{
               </div>
             </div>
           </header>
-            <div className="flex flex-row grow w-full items-center justify-center my-6 ">
+            <div className="flex flex-row z-10 grow w-full items-center justify-center my-6 ">
               <SearchSection handleSubmit={handleSubmit} handleSearchParamChange={handleSearchParamChange} />
             </div>
         </div>
@@ -153,13 +153,13 @@ const toggleHelp= ()=>{
           
         }
 
-<         div className=" fixed bottom-2 right-2 flex flex-col w-full items-end justify-end overflow-hidden ">
+<         div className=" fixed bottom-2 right-2 flex  w-full items-end justify-end overflow-hidden ">
             <div className="help-text" >
-              <p className="text-sm px-4 py-2 items-center justify-center ">
+              <p className=" text-xs px-4  md:text-sm md:py-2  items-center justify-center ">
                 Need help contacting a hostel? Call our help line on: &nbsp;<b>055 123 4567</b>
               </p>
             </div>
-            <button onClick={()=>toggleHelp()} className=" bottom-14  md:bottom-10 rounded-full h-full  text-sm  flex px-4 py-2 items-center justify-center text-white bg-blue-500">Help<img className="h-4 mx-1 white " src="/icons8-help-30.png"/></button>
+            <button onClick={()=>toggleHelp()} className=" bottom-14  md:bottom-10 rounded-full h-full  text-sm  flex mx-1 md:ml-10 px-4 py-2 items-center justify-center text-white bg-blue-500">Help<img className="h-4 mx-1 white " src="/icons8-help-30.png"/></button>
           </div>
            
         </section>
